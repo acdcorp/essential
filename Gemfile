@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem "better_errors"
   gem 'awesome_print', require: 'awesome_print'
+  gem 'thin'
 end
 
 group :test do
@@ -47,14 +48,4 @@ group :test do
   gem 'factory_girl_rails', '>= 4.2.1'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'unicorn'
