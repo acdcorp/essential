@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121201517) do
+ActiveRecord::Schema.define(version: 20140121201902) do
 
   create_table "abilities", force: true do |t|
     t.string   "name",        limit: 50,       null: false
@@ -630,6 +630,11 @@ ActiveRecord::Schema.define(version: 20140121201517) do
   add_index "user_settings", ["user_id"], name: "index_user_settings_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
+    t.string   "cell_phone"
+    t.string   "business_phone_ext"
+    t.string   "business_phone"
+    t.string   "last_name"
+    t.string   "first_name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
@@ -647,6 +652,11 @@ ActiveRecord::Schema.define(version: 20140121201517) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.integer  "creator_id",                          null: false
+    t.integer  "updator_id",                          null: false
+    t.integer  "role_id",                             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
