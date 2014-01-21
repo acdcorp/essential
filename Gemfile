@@ -37,6 +37,8 @@ group :development, :test do
   gem "better_errors"
   gem 'awesome_print', require: 'awesome_print'
   gem 'thin'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
