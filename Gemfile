@@ -32,6 +32,21 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem "better_errors"
+  gem 'awesome_print', require: 'awesome_print'
+end
+
+group :test do
+  gem 'poltergeist', github: 'jonleighton/poltergeist'
+  gem 'database_cleaner', '>= 1.0.0'
+  gem 'capybara'
+  gem 'capybara-firebug', github: 'jfirebaugh/capybara-firebug'
+  gem 'turnip', github: 'cj/turnip'
+  gem 'factory_girl_rails', '>= 4.2.1'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
