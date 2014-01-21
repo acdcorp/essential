@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0.beta1'
 
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.0.rc1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -39,6 +39,8 @@ group :development, :test do
   gem 'thin'
   gem 'spring'
   gem 'spring-commands-rspec'
+  # replace erb files with haml: rake haml:replace_erbs
+  gem "erb2haml"
 end
 
 group :test do
@@ -53,4 +55,4 @@ end
 gem 'unicorn'
 gem 'devise', github: 'plataformatec/devise'
 gem 'devise_invitable'
-gem "figaro"
+gem 'haml'
