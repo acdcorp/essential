@@ -1,6 +1,28 @@
 GIT
+  remote: git://github.com/acdcorp/powertools.git
+  revision: e9001e55804ed3fe87816bc0ccf41f1447622c20
+  branch: v2.0.0a
+  specs:
+    powertools (0.0.1)
+      apotomo
+      bower-rails-pt (~> 0.5.0)
+      coffee-rails (>= 4.0.0)
+      hooks
+      jquery-rails
+      less
+      less-rails
+      less-rails-bootstrap
+      less-rails-fontawesome (~> 0.5.1)
+      mab
+      rails (>= 4.0.0)
+      reform
+      scoped_search
+      simple_form (>= 3.0.0)
+      therubyracer
+
+GIT
   remote: git://github.com/cj/turnip.git
-  revision: c939cd02fd001cf0b6bb21b3963686cdeb0256da
+  revision: c545477e974365fb813d02eccc261dd08e8aed03
   specs:
     turnip (1.1.0)
       gherkin (>= 2.5)
@@ -26,7 +48,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: d5e0171cb40735de8bfc28daa5b6524f7e121732
+  revision: 7a9ae13baadc3643d0f5b74077d9760d19c56adb
   specs:
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
@@ -64,6 +86,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    apotomo (1.2.5)
+      cells (>= 3.6.7)
+      hooks (~> 0.3.0)
+      onfire (~> 0.2.0)
     arel (5.0.0)
     atomic (1.1.14)
     awesome_print (1.2.0)
@@ -71,6 +97,7 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    bower-rails-pt (0.5.0)
     builder (3.2.2)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -78,6 +105,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cells (3.9.1)
+      actionpack (>= 3.0)
+      railties (>= 3.0)
     childprocess (0.4.0)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -89,6 +119,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    commonjs (0.2.7)
     daemons (1.1.9)
     database_cleaner (1.2.0)
     devise_invitable (1.3.2)
@@ -105,12 +136,15 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     ffi (1.9.3)
     gherkin (2.12.2)
       multi_json (~> 1.3)
     haml (4.1.0.beta.1)
       tilt
     hike (1.2.3)
+    hooks (0.3.3)
     hpricot (0.8.6)
     html2haml (1.0.1)
       erubis (~> 2.7.0)
@@ -126,9 +160,22 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.8.1)
+    less (2.4.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.4.2)
+      actionpack (>= 3.1)
+      less (~> 2.4.0)
+    less-rails-bootstrap (3.0.6)
+      less-rails (~> 2.4.2)
+    less-rails-fontawesome (0.5.1)
+      less-rails (>= 2.1.7)
+      railties (>= 3.1.1)
+    libv8 (3.16.14.3)
+    mab (0.0.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (5.2.1)
@@ -136,8 +183,16 @@ GEM
     mysql2 (0.3.14)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    onfire (0.2.0)
     orm_adapter (0.5.0)
     polyglot (0.3.3)
+    protector (0.7.4)
+      activesupport
+      i18n
+    pry (0.9.12.4)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -160,6 +215,13 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    ref (1.0.5)
+    reform (0.2.4)
+      activemodel
+      representable (>= 1.7.5)
+    representable (1.7.5)
+      multi_json
+      nokogiri
     rspec (3.0.0.beta1)
       rspec-core (= 3.0.0.beta1)
       rspec-expectations (= 3.0.0.beta1)
@@ -191,6 +253,8 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    scoped_search (2.6.1)
+      activerecord (>= 2.1.0)
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
@@ -200,6 +264,10 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
     sexp_processor (4.4.1)
+    simple_form (3.0.1)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
+    slop (3.4.7)
     spring (1.1.0)
     spring-commands-rspec (1.0.1)
       spring (>= 0.9.1)
@@ -212,6 +280,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    therubyracer (0.12.0)
+      libv8 (~> 3.16.14.0)
+      ref
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -255,11 +326,15 @@ DEPENDENCIES
   devise_invitable
   erb2haml
   factory_girl_rails (>= 4.2.1)
+  faker (>= 1.2.0)
   haml
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
   poltergeist!
+  powertools!
+  protector
+  pry
   rails (= 4.1.0.beta1)
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0.rc1)

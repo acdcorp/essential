@@ -4,10 +4,10 @@ development: &base
   reconnect: false
   port: 3306
   pool: 5
-  database: <%= ENV['DB_NAME']%>
-  host: <%= ENV['DB_HOST']%>
-  username: <%= ENV['DB_USERNAME']%>
-  password: <%= ENV['DB_PASSWORD']%>
+  database: <%= Rails.application.secrets.db_name %>
+  host: <%= Rails.application.secrets.db_host %>
+  username: <%= Rails.application.secrets.db_username %>
+  password: <%= Rails.application.secrets.db_password %>
 
 test:
   <<: *base

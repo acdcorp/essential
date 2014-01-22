@@ -653,7 +653,7 @@ ActiveRecord::Schema.define(version: 20140121201902) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "creator_id",                          null: false
-    t.integer  "updator_id",                          null: false
+    t.integer  "updater_id",                          null: false
     t.integer  "role_id",                             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
