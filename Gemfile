@@ -34,7 +34,10 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
+
   gem "better_errors"
+  gem 'binding_of_caller'
+
   gem 'awesome_print', require: 'awesome_print'
   gem 'thin'
   gem 'spring'
@@ -60,3 +63,7 @@ gem 'devise_invitable'
 gem 'haml'
 gem 'protector'
 gem 'powertools', github: 'acdcorp/powertools', branch: 'v2.0.0a'
+gem 'enumerize'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
+gem 'turbolinks-redirect'

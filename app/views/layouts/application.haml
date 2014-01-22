@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title SubroLink by ACD
+
+    %meta{'http-equiv' => "X-UA-Compatible", content: "IE=edge,chrome=1"}
+    %meta{:content => "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}
+
+    %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,600,700", rel: "stylesheet", type: "text/css"}/
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  // TODO: remove the static class login
+  - if user_signed_in?
+    %body{ class: "#{controller.controller_name} #{@body_class}".strip }
+      = render partial: 'layouts/header'
+      #container.fixed-header
+        = render partial: 'layouts/sidebar'
+        #content
+          .container
+            = yield
+  - else
+    %body{ class: "login" }
+      = yield

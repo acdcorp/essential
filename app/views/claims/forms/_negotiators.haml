@@ -1,0 +1,4 @@
+= simple_form_for @claim_form, html: { class: 'form-horizontal' } do |f|
+  = f.input :negotiators, as: :select, include_blank: 'Please Choose One',
+    collection: @claim_form.negotiators, value_method: ->(t) { t.first },
+    label_method: ->(t) { t.last }

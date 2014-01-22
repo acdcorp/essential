@@ -1,0 +1,49 @@
+%header.header.navbar.navbar-fixed-top{:role => "banner"}
+  / Top Navigation Bar
+  .container
+    / Only visible on smartphones, menu toggle
+    %ul.nav.navbar-nav
+      %li.nav-toggle
+        %a{:href => "javascript:void();", :title => ""}
+          %i.icon-reorder
+    / Logo
+    %a.navbar-brand{:href => root_path}
+      %img{alt: "logo", src: "#{asset_path('logo.png')}", width: '190px'}/
+    / /logo
+    / Sidebar Toggler
+    %a.toggle-sidebar.bs-tooltip{"data-original-title" => "Toggle navigation", "data-placement" => "bottom", :href => "#"}
+      %i.icon-reorder
+    / /Sidebar Toggler
+    / Top Left Menu
+    -# %ul.nav.navbar-nav.navbar-left.hidden-xs.hidden-sm
+    -#   %li#feedback
+    -#     %a{ href: 'javascript:' }
+    -#       %i.icon-comments-alt
+    -#         Feedback
+    / /Top Left Menu
+    / Top Right Menu
+    %ul.nav.navbar-nav.navbar-right
+      %li#feedback.hidden-xs.hidden-sm
+        %a{ href: 'javascript:' }
+          %i.icon-comments-alt
+            Feedback
+      / User Login Dropdown
+      %li.dropdown.user
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %i.icon-male
+          %span.username #{current_user.full_name}
+          %i.icon-caret-down.small
+        %ul.dropdown-menu
+          -# - if !current_user.role.in_group?(:acd)
+          -#   %li
+          -#     %a{ href: current_user_profile_path }
+          -#       %i.icon-user
+          -#       Edit My Profile
+          %li
+            %a{:href => "/logout"}
+              %i.icon-key
+              Log Out
+      / /user login dropdown
+    / /Top Right Menu
+  / /top navigation bar
+/ /.header

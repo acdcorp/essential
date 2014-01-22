@@ -1,3 +1,5 @@
 FactoryGirl.define do
-  factory :role
+  factory :role do
+    name :dev
+  end
 end

@@ -1,0 +1,16 @@
+%ul#nav
+  - present :menu, PtNavPresenter do |nav|
+    - nav.items.each do |item|
+      %li{ class: (item.is_active? ? "current #{'open' if item.children}" : "") }
+        %a{ href: item.path }
+          %i{ class: item.icon_class }
+          #{item.title}
+          - if item.children and item.children.any?
+            %span.arrow
+        - if item.children and item.children.any?
+          %ul.sub-menu
+            - item.children.each do |child_item|
+              %li{ class: child_item.is_active? ? "current" : '' }
+                %a{ href: child_item.path }
+                  %i{ class: child_item.icon_class ? child_item.icon_class :  'icon-caret-right' }
+                  %span #{child_item.title}

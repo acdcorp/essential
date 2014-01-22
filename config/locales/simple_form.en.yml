@@ -1,0 +1,37 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      claim:
+        number: 'Claim Number'
+        primary_client_contact: 'Primary Client Contact'
+        request_type: 'Request Type'
+        is_total_loss: 'Total Loss?'
+        review_type: 'Review Type'
+        carrier_number: 'Claim Number'
+      owner:
+        first_name: 'Owner First Name'
+        last_name: 'Owner Last Name'
+    # Labels and hints examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+

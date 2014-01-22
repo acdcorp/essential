@@ -1,0 +1,49 @@
+#sidebar.sidebar-fixed
+  #sidebar-content
+    .tabbable
+      %ul.nav.nav-tabs
+        %li{ class: ((!@signing or params[:controller] != "signings") and (!@search or (@search && !@search.filters))) ? 'active' : ''  }
+          %a{"data-toggle" => "tab", :href => "#Menu"}
+            %i.icon-list
+            Menu
+        -# - if @search
+        -#   %li{ class: (@search && @search.filters) ? 'active' : '' }
+        -#     %a{"data-toggle" => "tab", :href => "#Filters"}
+        -#       %i.icon-search
+        -#       Search
+        -# - if @signing && params[:controller] == "signings"
+        -#   %li{ class: (@signing) ? 'active' : '' }
+        -#     %a{"data-toggle" => "tab", :href => "#Snapshot"}
+        -#       %i.icon-filter
+        -#       Snapshot
+      .tab-content
+        #Menu.tab-pane{ class: ((!@signing or params[:controller] != "signings") and (!@search or (@search && !@search.filters))) ? 'active' : '' }
+          = render partial: 'layouts/navigation'
+          -# = render_navigation expand_all: true
+        -# - if @search && params[:controller] == "signings"
+        -#   #Filters.tab-pane{ class: (@search && @search.filters) ? 'active' : '' }
+        -#     = render partial: 'signings/search_filters'
+        -# - elsif @search && params[:controller] == "dashboard"
+        -#   #Filters.tab-pane{ class: (@search && @search.filters) ? 'active' : '' }
+        -#     = render partial: 'dashboard/search_filters'
+        -# - elsif @search && params[:controller] == "clients"
+        -#   #Filters.tab-pane{ class: (@search && @search.filters) ? 'active' : '' }
+        -#     = render partial: 'clients/search_filters'
+        -# - elsif @search && params[:controller] == "signing_issues"
+        -#   #Filters.tab-pane{ class: (@search && @search.filters) ? 'active' : '' }
+        -#     = render partial: 'signing_issues/search_filters'
+        -# - elsif @search && @search.role_name_in
+        -#   #Filters.tab-pane{ class: (@search && @search.filters) ? 'active' : '' }
+        -#     = render partial: 'users/search_filters'
+        -# - elsif @signing && params[:controller] == "signings"
+        -#   #Snapshot.tab-pane{ class: (@signing) ? 'active' : '' }
+        -#     = render partial: 'signings/snapshot'
+-# %nav#main-nav.main-nav-fixed
+-#   .navigation
+-#     / search form visible on phone
+-#     -# .search
+-#     -#   %form{"accept-charset" => "UTF-8", :action => "search_results.html", :method => "get"}
+-#     -#     .search-wrapper
+-#     -#       %input#q.search-query{:autocomplete => "off", :name => "q", :placeholder => "Search...", :type => "text", :value => ""}/
+-#     -#       %button.btn.btn-link.icon-search{:name => "button", :type => "submit"}
+-#     / navigation items
