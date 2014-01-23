@@ -10,5 +10,4 @@ Subrolink::Application.routes.draw do
   end
 
   resources :claims
-  get '/claims/form/:type' => 'claims#form', as: :claim_form
 end

@@ -1,0 +1,8 @@
+- if form.model.company_id
+  = f.input :negotiators, as: :select, include_blank: 'Please Choose One',
+    collection: form.negotiators, value_method: ->(t) { t.first },
+    label_method: ->(t) { t.last }
+  = f.input :primary_client_contact, include_blank: 'Please Choose One',
+    as: :select, collection: form.model.company.users,
+    label_method: ->(p) { p.full_name },
+    value_method: ->(p) { p.id }

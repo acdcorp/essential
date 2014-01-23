@@ -1,26 +1,4 @@
 GIT
-  remote: git://github.com/acdcorp/powertools.git
-  revision: f5390c2e50ce5c2abdb4c63af9d0e1fb83ac7039
-  branch: v2.0.0a
-  specs:
-    powertools (0.0.1)
-      apotomo
-      bower-rails-pt (~> 0.5.0)
-      coffee-rails (>= 4.0.0)
-      hooks
-      jquery-rails
-      less
-      less-rails
-      less-rails-bootstrap
-      less-rails-fontawesome (~> 0.5.1)
-      mab
-      rails (>= 4.0.0)
-      reform
-      scoped_search
-      simple_form (>= 3.0.0)
-      therubyracer
-
-GIT
   remote: git://github.com/cj/turnip.git
   revision: c545477e974365fb813d02eccc261dd08e8aed03
   specs:
@@ -56,6 +34,35 @@ GIT
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+
+GIT
+  remote: git://github.com/pry/pry.git
+  revision: 7a99a978a98b671fac09bb9a2742f990e7859b1c
+  specs:
+    pry (1.0.0.pre.1)
+      coderay (>= 1.1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+
+PATH
+  remote: ~/apps/gems/powertools
+  specs:
+    powertools (0.0.1)
+      apotomo
+      bower-rails-pt (~> 0.5.0)
+      coffee-rails (>= 4.0.0)
+      hooks
+      jquery-rails
+      less
+      less-rails
+      less-rails-bootstrap
+      less-rails-fontawesome (~> 0.5.1)
+      mab
+      rails (>= 4.0.0)
+      reform
+      scoped_search
+      simple_form (>= 3.0.0)
+      therubyracer
 
 GEM
   remote: https://rubygems.org/
@@ -186,7 +193,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
-    minitest (5.2.1)
+    minitest (5.2.2)
     multi_json (1.8.4)
     mysql2 (0.3.14)
     nokogiri (1.6.1)
@@ -197,10 +204,6 @@ GEM
     protector (0.7.4)
       activesupport
       i18n
-    pry (0.9.12.4)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
-      slop (~> 3.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -328,6 +331,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apotomo
   awesome_print
   better_errors
   binding_of_caller
@@ -349,7 +353,7 @@ DEPENDENCIES
   poltergeist!
   powertools!
   protector
-  pry
+  pry!
   rails (= 4.1.0.beta1)
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0.rc1)

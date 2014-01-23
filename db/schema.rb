@@ -655,6 +655,7 @@ ActiveRecord::Schema.define(version: 20140121201902) do
     t.integer  "creator_id",                          null: false
     t.integer  "updater_id",                          null: false
     t.integer  "role_id",                             null: false
+    t.integer  "company_id",                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

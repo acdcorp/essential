@@ -38,7 +38,10 @@ Capybara.register_driver :ff_remote do |app|
   Capybara::Selenium::Driver.new(app, desired_capabilities: Selenium::WebDriver::Remote::Capabilities.firefox(firefox_profile: profile), url: 'http://127.0.0.1:4443/wd/hub', browser: :remote)
 end
 
-if not ENV['TEST_IN_BROWSER']
+if ENV['TEST_IN_BROWSER']
+  Capybara.default_driver    = :firefox
+  Capybara.javascript_driver = :firefox
+else
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(
       app,
@@ -50,9 +53,6 @@ if not ENV['TEST_IN_BROWSER']
   end
   Capybara.default_driver    = :poltergeist
   Capybara.javascript_driver = :poltergeist
-else
-  Capybara.default_driver    = :firefox
-  Capybara.javascript_driver = :firefox
 end
 
 RSpec.configure do |config|

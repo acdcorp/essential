@@ -45,7 +45,7 @@ group :development, :test do
   # replace erb files with haml: rake haml:replace_erbs
   gem "erb2haml"
   gem 'factory_girl_rails', '>= 4.2.1'
-  gem 'pry'
+  gem 'pry', github: 'pry/pry'
   gem 'faker', '>= 1.2.0'
 end
 
@@ -62,8 +62,9 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'devise_invitable'
 gem 'haml'
 gem 'protector'
-gem 'powertools', github: 'acdcorp/powertools', branch: 'v2.0.0a'
+gem 'powertools', path: '~/apps/gems/powertools' # github: 'acdcorp/powertools', branch: 'v2.0.0a'
 gem 'enumerize'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'turbolinks-redirect'
+gem 'apotomo'

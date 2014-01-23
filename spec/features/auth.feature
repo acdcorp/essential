@@ -1,4 +1,4 @@
-@javascript @screenshot
+@javascript
 Feature: Authentication
 
   Scenario Outline: redirect each user to /claims on sucessfull login

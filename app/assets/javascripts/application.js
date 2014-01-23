@@ -15,6 +15,6 @@
 //= require turbolinks
 //= require jquery.turbolinks
 //= require turbolinks.redirect
-//= require pt/tags
 //= require pt/admin_theme
+//= require pt/better-dom/dist/better-dom
 //= require_tree .

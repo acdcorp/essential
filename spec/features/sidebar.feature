@@ -1,4 +1,4 @@
-@javascript @screenshot
+@javascript
 Feature: Sidebar
 
   Background:

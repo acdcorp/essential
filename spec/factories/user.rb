@@ -15,6 +15,8 @@ FactoryGirl.define do
     password_confirmation "pass"
     creator_id Rails.application.secrets.system_user_id
     updater_id Rails.application.secrets.system_user_id
+
+    association :company, factory: :company
   end
 
   if Rails.env.test?

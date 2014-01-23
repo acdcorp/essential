@@ -4,7 +4,7 @@ class AddRequiredFieldsToUsersTable < ActiveRecord::Migration
       t.string :first_name, :last_name, :business_phone,
         :business_phone_ext, :cell_phone, after: :id
 
-      t.references :creator, :updater, :role, null: false
+      t.references :creator, :updater, :role, :company, null: false
 
       t.timestamps
     end
