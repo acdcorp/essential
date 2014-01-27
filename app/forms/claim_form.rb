@@ -1,29 +1,30 @@
-class ClaimForm < Powertools::Form
-  form_name :claim
+class ClaimForm < Reform::Form
+  model :claim
 
-  # Table fields
-  delegate :id,
-    :company_id, :request_type, :suffix, :is_total_loss, :number,
-    :review_type, :carrier_number,
-    to_model: :claim
+  properties [
+    :request_type, :suffix, :review_type, :number, :carrier_number,
+    :is_total_loss, :primary_client_contact
+  ]
 
-  # Asccociated fields
-  delegate :primary_client_contact_id, :primary_client_contact,
-    :owner_id, :owner,
-    to_model: :claim
+  # Associations
+  properties [
+    :company_id, :carrier_id, :carrier_office_id
+  ]
+
+  property :company, form: CompanyForm, model: Company
+
+  property :owner do
+    properties [:first_name, :last_name]
+  end
+
+  property :carrier do
+    property :name
+  end
 
   def negotiators
     {
       acd: 'ACD',
       client: 'Client'
     }
-  end
-
-  def owner
-    unless claim.owner
-      claim.build_owner
-    end
-
-    claim.owner
   end
 end

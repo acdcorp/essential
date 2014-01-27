@@ -10,10 +10,10 @@
 = f.input :number
 
 = f.association :company, include_blank: 'Please Choose One',
-  input_html: {'select-change' => url_for_event(:company_selected) }
+  input_html: {'on-change-get' => url_for_event(:selected_company) }
 
 #claim-company
-  = render view: :company_selected, locals: { f: f }
+  = render view: :selected_company, locals: { f: f }
 
 = f.input :review_type, as: :select,
   collection: Claim.review_type.values,

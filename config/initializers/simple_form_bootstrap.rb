@@ -11,20 +11,22 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :prepend, tag: 'div', class: "control-group", error_class: 'has-error help-block' do |b|
+  config.wrappers :prepend, tag: 'div', class: "form-group", error_class: 'has-error help-block' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label
     b.wrapper tag: 'div', class: 'col-md-10' do |input|
-      input.wrapper tag: 'div', class: 'input-prepend' do |prepend|
+      input.wrapper tag: 'div', class: 'input-group' do |prepend|
         prepend.use :input
+        prepend.use :icon, wrap_with: { tag: :span, class: 'input-group-addon'  }
+        prepend.use :button, wrap_with: { tag: :span, class: 'input-group-btn'  }
       end
       input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
       input.use :error, wrap_with: { tag: 'span', class: 'has-error help-block' }
     end
   end
 
-  config.wrappers :append, tag: 'div', class: "control-group", error_class: 'has-error help-block' do |b|
+  config.wrappers :append, tag: 'div', class: "form-group", error_class: 'has-error help-block' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label

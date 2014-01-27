@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require pt/jquery/jquery
-//= require jquery_ujs
 //= require turbolinks
 //= require jquery.turbolinks
 //= require turbolinks.redirect
 //= require pt/admin_theme
 //= require pt/better-dom/dist/better-dom
+//= require pt/bootbox/bootbox
 //= require_tree .

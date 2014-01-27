@@ -1,7 +1,11 @@
 class Claim < ActiveRecord::Base
   extend Enumerize
 
+  include ClaimPermissions
+
   belongs_to :company
+  belongs_to :carrier
+  belongs_to :carrier_office
   belongs_to :primary_client_contact
 
   has_one :owner
