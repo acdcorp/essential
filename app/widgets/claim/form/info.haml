@@ -1,4 +1,4 @@
-= widget_div do
+= widget_div id: 'claim-info' do
   = f.input :request_type, as: :select,
     collection: Claim.request_type.values,
     label_method: ->(r) { r.humanize },
@@ -10,7 +10,7 @@
 
   = f.input :number
 
-  = f.association :company, include_blank: 'Please Choose One',
+  = f.association :company, prompt: 'Please Choose One',
     input_html: {'on-change-get' => url_for_event(:selected_company) }
 
   = render view: :selected_company, locals: { f: f }
@@ -21,7 +21,7 @@
     selected: :audit,
     include_blank: 'Please Choose One'
 
-  = simple_fields_for :owner, form.owner do |owner|
+  = f.simple_fields_for :owner, form.owner do |owner|
     = owner.input :first_name
     = owner.input :last_name
 

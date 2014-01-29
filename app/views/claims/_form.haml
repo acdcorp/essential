@@ -23,7 +23,7 @@
       selected: :audit,
       include_blank: 'Please Choose One'
 
-    = simple_fields_for :owner, @claim_form.owner do |owner|
+    = f.simple_fields_for :owner, @claim_form.owner do |owner|
       = owner.input :first_name
       = owner.input :last_name
 

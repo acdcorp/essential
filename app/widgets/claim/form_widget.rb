@@ -2,15 +2,32 @@ class Claim::FormWidget < Apotomo::Widget
   responds_to_event :selected_company
   responds_to_event :selected_carrier
   responds_to_event :selected_carrier_office
+  responds_to_event :selected_carrier_adjuster
   responds_to_event :add_carrier
   responds_to_event :add_carrier_office
+  responds_to_event :add_carrier_adjuster
   responds_to_event :create_carrier
   responds_to_event :create_carrier_office
+  responds_to_event :create_carrier_adjuster
   responds_to_event :created_carrier
   responds_to_event :created_carrier_office
+  responds_to_event :created_carrier_adjuster
+  responds_to_event :submit_claim
 
   def display
     render
+  end
+
+  def submit_claim data
+    if form.validate data[:claim]
+      form.save_as current_user
+      # trigger carrier created
+      trigger :created_claim, model: form.model
+      # close modals on the page
+      close_modals
+    else
+      replace state: :display
+    end
   end
 
   ### Comapany ###
@@ -102,6 +119,52 @@ class Claim::FormWidget < Apotomo::Widget
     replace '#claim-carrier-office', text: render_view(:carrier_office)
   end
 
+  ### Carrier Adjuster ###
+
+  def selected_carrier_adjuster data
+    if id = data[:value]
+      form.carrier_office_adjuster = CarrierAdjuster.restrict!(current_user).find(id)
+      form.carrier_office_adjuster_id = id
+    end
+
+    replace '#claim-selected-carrier-adjuster', text: render_view(:selected_carrier_adjuster)
+  end
+
+  def add_carrier_adjuster data
+    @carrier_adjuster_form = CarrierAdjusterForm.new CarrierAdjuster.new({
+      carrier_office_id: data[:carrier_office_id]
+    })
+
+    modal title: 'Add Carrier Adjuster', buttons: {
+      main: {
+        label: 'Add',
+        className: 'btn-primary'
+      }
+    }
+  end
+
+  def create_carrier_adjuster data
+    @carrier_adjuster_form = CarrierAdjusterForm.new CarrierAdjuster.new
+
+    if @carrier_adjuster_form.validate data[:carrier_adjuster]
+      @carrier_adjuster_form.save_as current_user
+      # update the form carrier id
+      form.carrier_office_adjuster_id = @carrier_adjuster_form.model.id
+      form.carrier_office_adjuster    = @carrier_adjuster_form.model
+      form.carrier_office_id          = @carrier_adjuster_form.model.carrier_office_id
+      # trigger carrier created
+      trigger :created_carrier_adjuster, model: @carrier_adjuster_form.model
+      # close modals on the page
+      close_modals
+    else
+      replace '#claim-add-carrier-adjuster', view: :add_carrier_adjuster
+    end
+  end
+
+  def created_carrier_adjuster data
+    replace '#claim-carrier-adjuster', text: render_view(:carrier_adjuster)
+  end
+
   ### Misc ###
 
   def form
@@ -111,6 +174,7 @@ class Claim::FormWidget < Apotomo::Widget
       else
         claim = Claim.new
         claim.build_owner
+        claim.build_vehicle
       end
 
       ClaimForm.new claim.restrict! current_user

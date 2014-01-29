@@ -2,9 +2,12 @@
 
   - if form.carrier_office_id.present?
 
-    = f.association :carrier_office_adjuster, include_blank: 'Please Choose One',
+    = f.association :carrier_office_adjuster, label_method: :full_name, include_blank: 'Please Choose One',
       collection: CarrierOffice.find(form.carrier_office_id).adjusters,
       input_html: {'on-change-get' => url_for_event(:selected_carrier_adjuster) },
       wrapper: :prepend,
-      button: { icon: 'plus', 'on-click-get' => url_for_event(:add_carrier_adjuster, carrier_office_id: form.carrier_office_id),
-                tooltip: 'Click to add new carrier adjuster.', id: 'add-carrier-adjuster' }
+      button: { icon: 'plus',
+        'on-click-get' => url_for_event(:add_carrier_adjuster, carrier_office_id: form.carrier_office_id),
+        tooltip: 'Click to add new carrier adjuster.', id: 'add-carrier-adjuster' }
+
+    = render view: :selected_carrier_adjuster, locals: { f: f }

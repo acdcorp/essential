@@ -1,0 +1,7 @@
+= widget_div id: 'claim-add-carrier-adjuster' do
+  = simple_form_for @carrier_adjuster_form, url: url_for_event(:create_carrier_adjuster), html: { class: 'form-horizontal', remote: true } do |f|
+    = f.input :carrier_office_id, as: :hidden
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :business_phone
+    = f.input :business_phone_ext, label: 'Ext #'

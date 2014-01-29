@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121201902) do
+ActiveRecord::Schema.define(version: 20140129222008) do
 
   create_table "abilities", force: true do |t|
     t.string   "name",        limit: 50,       null: false
@@ -176,12 +176,14 @@ ActiveRecord::Schema.define(version: 20140121201902) do
     t.datetime "closed_at"
     t.boolean  "is_acd_negotiation",                                                   default: false
     t.integer  "active_supplement_id"
+    t.integer  "vehicle_id"
   end
 
   add_index "claims", ["carrier_id"], name: "index_claims_on_carrier_id", using: :btree
   add_index "claims", ["company_id"], name: "index_claims_on_company_id", using: :btree
   add_index "claims", ["created_at"], name: "index_claims_on_created_at", using: :btree
   add_index "claims", ["status"], name: "index_claims_on_status", using: :btree
+  add_index "claims", ["vehicle_id"], name: "index_claims_on_vehicle_id", using: :btree
 
   create_table "claims_labels", force: true do |t|
     t.integer  "claim_id"
