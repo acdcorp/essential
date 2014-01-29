@@ -1,27 +1,27 @@
-= f.input :request_type, as: :select,
-  collection: Claim.request_type.values,
-  label_method: ->(r) { r.humanize },
-  selected: :audit
+= widget_div do
+  = f.input :request_type, as: :select,
+    collection: Claim.request_type.values,
+    label_method: ->(r) { r.humanize },
+    selected: :audit
 
-= f.input :suffix
+  = f.input :suffix
 
-= f.input :is_total_loss, as: :select, include_blank: 'Please Choose One'
+  = f.input :is_total_loss, as: :select, include_blank: 'Please Choose One'
 
-= f.input :number
+  = f.input :number
 
-= f.association :company, include_blank: 'Please Choose One',
-  input_html: {'on-change-get' => url_for_event(:selected_company) }
+  = f.association :company, include_blank: 'Please Choose One',
+    input_html: {'on-change-get' => url_for_event(:selected_company) }
 
-#claim-company
   = render view: :selected_company, locals: { f: f }
 
-= f.input :review_type, as: :select,
-  collection: Claim.review_type.values,
-  label_method: ->(r) { r.humanize },
-  selected: :audit,
-  include_blank: 'Please Choose One'
+  = f.input :review_type, as: :select,
+    collection: Claim.review_type.values,
+    label_method: ->(r) { r.humanize },
+    selected: :audit,
+    include_blank: 'Please Choose One'
 
-= simple_fields_for :owner, form.owner do |owner|
-  = owner.input :first_name
-  = owner.input :last_name
+  = simple_fields_for :owner, form.owner do |owner|
+    = owner.input :first_name
+    = owner.input :last_name
 

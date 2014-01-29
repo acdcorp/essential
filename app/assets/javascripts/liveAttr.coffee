@@ -5,12 +5,15 @@ window.liveAttr = (selector, event, callback) ->
     regex    = new RegExp "[\s\.\>]", "g"
     key      = "liveAttr-#{selector.replace(regex, '-')}"
 
-    unless selector.has(regex)
-      attr     = selector
-      selector = "[#{selector}]"
+    if selector.has(regex)
+      attr      = ''
+      jSelector = selector
+    else
+      attr      = selector
+      jSelector = "[#{selector}]"
 
     addAttr = ->
-      $(selector).each ->
+      $(jSelector).each ->
         $el = $ @
 
         unless $el.data key
@@ -18,7 +21,7 @@ window.liveAttr = (selector, event, callback) ->
 
           $el.bind event, ->
             $this = $ @
-            callback.trigger.call $this, $this.attr(attr or '')
+            callback.trigger.call $this, $this.attr(attr)
             false
 
           $el.data key, true
@@ -27,7 +30,6 @@ window.liveAttr = (selector, event, callback) ->
     $(document).on 'page:change', -> addAttr()
 
 ### Events ###
-
 liveAttr 'on-change-get', 'change',
   trigger: (url) -> $.ajax url: "#{url}&value=#{@val()}"
 
@@ -38,7 +40,8 @@ liveAttr 'on-click-get', 'click',
 
 # Stop main button from closing dialog and make it submit the visible form
 liveAttr 'body > .bootbox .modal-footer > .btn-primary', 'click',
-  trigger: -> @prev().find('form:visible').submit()
+  trigger: ->
+    @closest('.modal-content').find('.bootbox-body form:visible').submit()
 
 # Close the modal if the background is clicked
 liveAttr 'body > .bootbox.modal', 'click',

@@ -1,5 +1,5 @@
 = widget_div do
-  = simple_form_for form, html: { class: 'form-horizontal', 'pt-remote' => true  } do |f|
+  = simple_form_for form, html: { class: 'form-horizontal' } do |f|
     = pt_box header: 'Claim Info', id: 'claim-info' do
       = render view: :info, locals: { f: f }
     = pt_box header: 'Adverse Carrier', id: 'claim-adverse-carrier' do

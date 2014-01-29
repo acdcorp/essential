@@ -1,16 +1,40 @@
-%h2 Sign in
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, :autofocus => true
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
-  - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit "Sign in"
-= render "devise/shared/links"
+/ Logo
+.logo
+  %img{alt: "logo", src: "/assets/logo.png"}
+/ /Logo
+/ Login Box
+.box
+  .content
+    / Login Formular
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'login-form' } }) do |f|
+      / Title
+      %h3.form-title Sign In to your Account
+      / Error Message
+      = render partial: 'devise/shared/alerts'      
+      / Input Fields
+      .form-group{class: "#{resource.errors.messages[:email].present? ? "has_error" : ""}"}
+        / <label for="username">Username:</label>
+        .input-icon
+          %i.icon-envelope
+          = f.input_field :email, autofocus: true, "data-msg-required" => "Please enter your email.", "data-rule-required" => "true", placeholder: "Email", type: "text"      
+      .form-group{class: "#{resource.errors.messages[:password].present? ? "has_error" : ""}"}
+        / <label for="password">Password:</label>
+        .input-icon
+          %i.icon-lock
+          = f.input_field :password, "data-msg-required" => "Please enter your password.", "data-rule-required" => "true", placeholder: "Password", type: "password"
+      / /Input Fields
+      / Form Actions
+      .form-actions
+        %label.checkbox.pull-left
+          %input.uniform{name: "remember_me", type: "checkbox"}/
+          Remember me
+        %button.submit.btn.btn-primary.pull-right{type: "submit"}
+          Sign In
+          %i.icon-angle-right
+    / /Login Formular
+  / /.content
+  / Links
+
+  .inner-box
+    .content
+      = link_to "Forgot your password?", new_password_path(resource_name)

@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/apotonick/reform.git
+  revision: 60ffc73b3d6a049412a43976123070c7b45189b3
+  specs:
+    reform (0.2.4)
+      activemodel
+      hooks
+      representable (>= 1.7.5)
+
+GIT
   remote: git://github.com/cj/turnip.git
   revision: c545477e974365fb813d02eccc261dd08e8aed03
   specs:
@@ -142,6 +151,9 @@ GEM
       html2haml
     erubis (2.7.0)
     eventmachine (1.0.3)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.0.2)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
@@ -227,9 +239,6 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
-    reform (0.2.4)
-      activemodel
-      representable (>= 1.7.5)
     representable (1.7.5)
       multi_json
       nokogiri
@@ -343,6 +352,7 @@ DEPENDENCIES
   devise_invitable
   enumerize
   erb2haml
+  exception_notification
   factory_girl_rails (>= 4.2.1)
   faker (>= 1.2.0)
   haml
@@ -355,6 +365,7 @@ DEPENDENCIES
   protector
   pry!
   rails (= 4.1.0.beta1)
+  reform!
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0.rc1)
   sdoc

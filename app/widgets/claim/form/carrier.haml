@@ -1,0 +1,10 @@
+= widget_div id: 'claim-carrier' do
+
+  = f.association :carrier, include_blank: 'Please Choose One',
+    collection: Carrier.all,
+    input_html: {'on-change-get' => url_for_event(:selected_carrier) },
+    wrapper: :prepend,
+    button: { icon: 'plus', 'on-click-get' => url_for_event(:add_carrier),
+              tooltip: 'Click to add new carrier.', id: 'add-carrier' }
+
+  = render view: :selected_carrier, locals: { f: f }

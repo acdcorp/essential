@@ -1,0 +1,12 @@
+= widget_div id: 'claim-carrier-office' do
+
+  - if form.carrier_id.present?
+
+    = f.association :carrier_office, include_blank: 'Please Choose One',
+      collection: Carrier.find(form.carrier_id).offices,
+      input_html: {'on-change-get' => url_for_event(:selected_carrier_office) },
+      wrapper: :prepend,
+      button: { icon: 'plus', 'on-click-get' => url_for_event(:add_carrier_office, carrier_id: form.carrier_id),
+                tooltip: 'Click to add new carrier office.', id: 'add-carrier-office' }
+
+    = render view: :selected_carrier_office, locals: { f: f }

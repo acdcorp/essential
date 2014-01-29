@@ -1,1 +1,3 @@
-moo
+= widget_div id: 'claim-add-carrier' do
+  = simple_form_for @carrier_form, url: url_for_event(:create_carrier), html: { class: 'form-horizontal', remote: true } do |f|
+    = f.input :name

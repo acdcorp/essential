@@ -1,0 +1,10 @@
+= widget_div id: 'claim-selected-carrier-office' do
+  - if form.carrier_office_id.present?
+    = f.simple_fields_for :carrier_office do |c|
+      = c.simple_fields_for :address do |a|
+        = a.input :line1, required: true
+        = a.input :line2
+        = a.input :city, required: true
+        = a.input :state, required: true
+        = a.input :zip, required: true
+    = render view: :carrier_adjuster, locals: { f: f }
