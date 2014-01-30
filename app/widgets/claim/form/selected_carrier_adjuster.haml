@@ -1,5 +1,5 @@
 = widget_div id: 'claim-selected-carrier-adjuster' do
   - if form.carrier_office_adjuster_id.present?
-    = f.simple_fields_for :carrier_office_adjuster do |a|
+    = f.simple_fields_for :carrier_office_adjuster, CarrierAdjuster.find(form.carrier_office_adjuster_id) do |a|
       = a.input :business_phone, as: :display
       = a.input :business_phone_ext, label: 'Ext #', as: :display

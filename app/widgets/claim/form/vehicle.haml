@@ -1,6 +1,6 @@
 = widget_div id: 'claim-vehicle' do
-  = f.simple_fields_for :vehicle, form.vehicle do |v|
+  = f.simple_fields_for :vehicle do |v|
     = v.input :year
     = v.input :make
-    = v.input :model
+    = v.input :model_name, label: 'Model'
     = v.input :vin

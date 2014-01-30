@@ -2,3 +2,9 @@
   = simple_form_for @carrier_office_form, url: url_for_event(:create_carrier_office), html: { class: 'form-horizontal', remote: true } do |f|
     = f.input :carrier_id, as: :hidden
     = f.input :name
+    = f.simple_fields_for :address do |a|
+      = a.input :line1
+      = a.input :line2
+      = a.input :city
+      = a.input :state
+      = a.input :zip

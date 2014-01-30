@@ -47,6 +47,7 @@ group :development, :test do
   gem 'factory_girl_rails', '>= 4.2.1'
   gem 'pry', github: 'pry/pry'
   gem 'faker', '>= 1.2.0'
+  gem 'require_reloader', '>= 0.2.0'
 end
 
 group :test do

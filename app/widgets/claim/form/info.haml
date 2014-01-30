@@ -2,7 +2,7 @@
   = f.input :request_type, as: :select,
     collection: Claim.request_type.values,
     label_method: ->(r) { r.humanize },
-    selected: :audit
+    selected: form.request_type || :audit
 
   = f.input :suffix
 
@@ -18,10 +18,10 @@
   = f.input :review_type, as: :select,
     collection: Claim.review_type.values,
     label_method: ->(r) { r.humanize },
-    selected: :audit,
+    selected: form.review_type || :auto,
     include_blank: 'Please Choose One'
 
-  = f.simple_fields_for :owner, form.owner do |owner|
+  = f.simple_fields_for :owner do |owner|
     = owner.input :first_name
     = owner.input :last_name
 

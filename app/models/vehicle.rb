@@ -3,4 +3,8 @@ class Vehicle < ActiveRecord::Base
 
   belongs_to :claim
   has_one :owner, through: :claim
+
+  before_create do
+    self.model  = model_name
+  end
 end

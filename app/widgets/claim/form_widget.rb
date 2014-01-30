@@ -23,9 +23,9 @@ class Claim::FormWidget < Apotomo::Widget
       form.save_as current_user
       # trigger carrier created
       trigger :created_claim, model: form.model
-      # close modals on the page
-      close_modals
+      replace state: :display
     else
+      ap form.errors.messages
       replace state: :display
     end
   end
@@ -122,10 +122,7 @@ class Claim::FormWidget < Apotomo::Widget
   ### Carrier Adjuster ###
 
   def selected_carrier_adjuster data
-    if id = data[:value]
-      form.carrier_office_adjuster = CarrierAdjuster.restrict!(current_user).find(id)
-      form.carrier_office_adjuster_id = id
-    end
+    form.carrier_office_adjuster_id = data[:value]
 
     replace '#claim-selected-carrier-adjuster', text: render_view(:selected_carrier_adjuster)
   end
@@ -150,7 +147,6 @@ class Claim::FormWidget < Apotomo::Widget
       @carrier_adjuster_form.save_as current_user
       # update the form carrier id
       form.carrier_office_adjuster_id = @carrier_adjuster_form.model.id
-      form.carrier_office_adjuster    = @carrier_adjuster_form.model
       form.carrier_office_id          = @carrier_adjuster_form.model.carrier_office_id
       # trigger carrier created
       trigger :created_carrier_adjuster, model: @carrier_adjuster_form.model
@@ -168,17 +164,25 @@ class Claim::FormWidget < Apotomo::Widget
   ### Misc ###
 
   def form
-    @form ||= options[:form] ||= -> do
-      if id = options[:claim_id]
+    @form ||= options[:form] ||= ->(params) do
+      ap params
+
+      if params['controller'] == 'claims' and (id = params['id']) and id.is_i?
+        claim = Claim.find id
+      elsif params['claim'] and (id = params['claim']['id'])
+        claim = Claim.find id
+      elsif id = params['claim_id']
+        claim = Claim.find id
+      elsif id = options[:claim_id]
         claim = Claim.find id
       else
         claim = Claim.new
         claim.build_owner
-        claim.build_vehicle
+        claim.build_company
       end
 
       ClaimForm.new claim.restrict! current_user
-    end.call
+    end.call(params)
   end
   helper_method :form
 

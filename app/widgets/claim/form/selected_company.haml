@@ -1,9 +1,10 @@
 = widget_div id: 'claim-selected-company' do
   - if form.company_id.present?
-    = f.input :negotiators, as: :select, prompt: 'Please Choose One',
+    = f.input :negotiator, as: :select, prompt: 'Please Choose One',
       collection: form.negotiators, value_method: ->(t) { t.first },
       label_method: ->(t) { t.last }
-    = f.input :primary_client_contact, prompt: 'Please Choose One',
+
+    = f.input :primary_client_contact_id, prompt: 'Please Choose One',
       as: :select, collection: Company.find(form.company_id).users,
       label_method: ->(p) { p.full_name },
       value_method: ->(p) { p.id }

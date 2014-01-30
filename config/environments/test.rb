@@ -43,4 +43,6 @@ Subrolink::Application.configure do
       :sender_address => %{"Subro Errors" <errors@acdcorp.com>},
       :exception_recipients => %w{subro@acdcorp.com}
     }
+
+  RequireReloader.watch_local_gems!
 end

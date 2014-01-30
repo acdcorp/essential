@@ -1,5 +1,5 @@
 class CarrierOfficeForm < Reform::Form
-  properties [:name, :carrier_id, :adjusters]
+  properties [:name, :carrier_id]
 
   validates :name, presence: true
 

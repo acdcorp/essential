@@ -7,10 +7,15 @@ class Claim < ActiveRecord::Base
   belongs_to :carrier
   belongs_to :carrier_office
   belongs_to :carrier_office_adjuster, class_name: "CarrierAdjuster"
-  belongs_to :primary_client_contact
+  belongs_to :primary_client_contact, class_name: 'User'
 
   has_one :owner
   has_one :vehicle
+
+  attr_accessor :negotiator
+
+  accepts_nested_attributes_for :vehicle, :owner, :carrier, :company,
+    :carrier_office, :carrier_office_adjuster, :primary_client_contact
 
   enumerize :request_type, in: [:audit, :excess]
   enumerize :review_type,  in: [:auto, :property]
@@ -21,4 +26,8 @@ class Claim < ActiveRecord::Base
     :repair_shop, :insurance_adjuster, :independent_appraiser
   ]
   enumerize :type_of_loss, in: [:collision, :property_damage]
+
+  before_create do
+    self.status = :new
+  end
 end

@@ -248,6 +248,7 @@ GEM
     representable (1.7.5)
       multi_json
       nokogiri
+    require_reloader (0.2.0)
     rspec (3.0.0.beta1)
       rspec-core (= 3.0.0.beta1)
       rspec-expectations (= 3.0.0.beta1)
@@ -373,6 +374,7 @@ DEPENDENCIES
   pry!
   rails (= 4.1.0.beta1)
   reform!
+  require_reloader (>= 0.2.0)
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0.rc1)
   sdoc
