@@ -24,10 +24,6 @@ class ClaimForm < Reform::Form
     :primary_client_contact_id
   ]
 
-  property :company, form: CompanyForm, model: Company
-  property :carrier, form: CarrierForm, model: Carrier
-  property :carrier_office, form: CarrierOfficeForm, model: CarrierOffice
-  property :carrier_office_adjuster, form: CarrierAdjusterForm, model: CarrierAdjuster
   property :vehicle, form: VehicleForm, model: Vehicle
 
   property :owner do

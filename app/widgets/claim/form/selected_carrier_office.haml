@@ -1,6 +1,6 @@
 = widget_div id: 'claim-selected-carrier-office' do
   - if form.carrier_office_id.present?
-    = f.simple_fields_for :carrier_office, CarrierOffice.find(form.carrier_office_id) do |c|
+    = simple_fields_for :carrier_office, CarrierOffice.find(form.carrier_office_id) do |c|
       = c.simple_fields_for :address do |a|
         = a.input :line1, as: :display
         = a.input :line2, as: :display

@@ -19,13 +19,25 @@ class Claim::FormWidget < Apotomo::Widget
   end
 
   def submit_claim data
+    has_id = form.id
+
+    ap data[:claim]
     if form.validate data[:claim]
-      form.save_as current_user
-      # trigger carrier created
-      trigger :created_claim, model: form.model
+      form.save_as(current_user) do |nested|
+        # Do not create an owner record if one wasn't entered
+        unless nested[:owner][:first_name].present? || nested[:owner][:last_name].present?
+          nested.delete 'owner'
+        end
+      end
+
+      if has_id
+        trigger :updated_claim, model: form.model
+      else
+        trigger :created_claim, model: form.model
+      end
+
       replace state: :display
     else
-      ap form.errors.messages
       replace state: :display
     end
   end
@@ -165,8 +177,6 @@ class Claim::FormWidget < Apotomo::Widget
 
   def form
     @form ||= options[:form] ||= ->(params) do
-      ap params
-
       if params['controller'] == 'claims' and (id = params['id']) and id.is_i?
         claim = Claim.find id
       elsif params['claim'] and (id = params['claim']['id'])
