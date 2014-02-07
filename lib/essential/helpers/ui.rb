@@ -37,7 +37,7 @@ module Essential
         end
       end
 
-      def box options = {}, &block
+      def panel options = {}, &block
         helper = self
 
         html do
