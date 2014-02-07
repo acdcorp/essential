@@ -46,6 +46,13 @@ group :development, :test do
   gem 'pry', '~> 0.9.12.6'
   gem 'faker', '~> 1.2.0'
   gem 'require_reloader', '~> 0.2.0'
+  gem 'bullet', '~> 4.7.1'
+  gem 'uniform_notifier', '~> 1.4.0'
+  # javascript console (Safari/Webkit browsers or Firefox w/Firebug installed)
+  # UniformNotifier.console = true
+
+  # # rails logger
+  # UniformNotifier.rails_logger = true
 end
 
 group :test do
