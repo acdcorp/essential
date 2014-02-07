@@ -75,6 +75,8 @@ gem 'turbolinks-redirect', '~> 0.0.1'
 gem 'apotomo', '~> 1.2.5'
 gem 'reform', '~> 0.2.4'
 gem 'exception_notification', '~> 4.0.1'
+gem 'simple_form', '~> 3.0.1'
+gem 'mab', '~> 0.0.3'
 
 ### THEME ###
 gem 'therubyracer', '~> 0.12.1'
@@ -82,5 +84,3 @@ gem 'font-awesome-rails', '~> 4.0.3.1'
 gem 'bootstrap-sass', '~> 3.1.0.2'
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
-
-gem 'powertools', github: 'acdcorp/powertools', branch: 'v2.0.0a'
