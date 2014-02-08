@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130003933) do
+ActiveRecord::Schema.define(version: 20140203200128) do
 
   create_table "abilities", force: true do |t|
     t.string   "name",        limit: 50,       null: false
@@ -174,8 +174,8 @@ ActiveRecord::Schema.define(version: 20140130003933) do
     t.string   "suffix",                     limit: 10
     t.boolean  "is_closed",                                                            default: false,   null: false
     t.datetime "closed_at"
-    t.boolean  "is_acd_negotiation",                                                   default: false
     t.integer  "active_supplement_id"
+    t.string   "negotiator",                                                                             null: false
   end
 
   add_index "claims", ["carrier_id"], name: "index_claims_on_carrier_id", using: :btree

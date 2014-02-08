@@ -12,11 +12,10 @@ class Claim < ActiveRecord::Base
   has_one :owner
   has_one :vehicle
 
-  attr_accessor :negotiator
-
   accepts_nested_attributes_for :vehicle, :owner, :carrier, :company,
     :carrier_office, :carrier_office_adjuster, :primary_client_contact
 
+  enumerize :negotiator, in: [:acd, :client]
   enumerize :request_type, in: [:audit, :excess]
   enumerize :review_type,  in: [:auto, :property]
   enumerize :status, in: [

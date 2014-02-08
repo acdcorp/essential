@@ -19,7 +19,7 @@ module SimpleForm
         btn_opts = options[:button]
 
         options = {
-          class: "icon-#{btn_opts[:icon]} btn btn-default"
+          class: "fa fa-#{btn_opts[:icon]} btn btn-default"
         }
 
         btn_opts.each do |key, value|

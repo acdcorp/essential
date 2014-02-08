@@ -1,7 +1,7 @@
 class CarrierAdjuster < ActiveRecord::Base
   include CarrierAdjusterPermissions
 
-  belongs_to :office, class_name: 'CarrierOffice'
+  belongs_to :office, class_name: 'CarrierOffice', foreign_key: 'carrier_office_id'
 
   # Set first and last name with one string (full_name)
   def full_name=(name)

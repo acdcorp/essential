@@ -4,6 +4,7 @@ Feature: Claims
   Background:
     Given I have a client
       And I'm logged in as an "ACD Manager"
+      And binding.pry
 
   Scenario: Create a claim and be redirect to the edit page
     Given I'm on the "Create Claim" page

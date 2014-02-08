@@ -1,12 +1,12 @@
 = widget_div do
   = simple_form_for form, method: :post, url: url_for_event(:submit_claim, claim_id: form.id) + "&action=responds_to_event", html: { class: 'form-horizontal', remote: true } do |f|
-    = pt_box header: 'Claim Info', id: 'claim-info-box' do
+    = panel header: 'Claim Info', id: 'claim-info-panel' do
       = render view: :info, locals: { f: f }
-    = pt_box header: 'Adverse Carrier', id: 'adverse-carrier-box' do
+    = panel header: 'Adverse Carrier', id: 'adverse-carrier-panel' do
       = render view: :adverse_carrier, locals: { f: f }
-    = pt_box header: 'Estimate', id: 'estimate-box' do
+    = panel header: 'Estimate', id: 'estimate-panel' do
       = render view: :estimate, locals: { f: f }
-    = pt_box header: 'Vehicle', id: 'vehicle-box' do
+    = panel header: 'Vehicle', id: 'vehicle-panel' do
       = render view: :vehicle, locals: { f: f }
     .form-actions.fluid
       = f.button :submit, class: 'btn btn-primary pull-right'

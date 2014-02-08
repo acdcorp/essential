@@ -3,7 +3,7 @@ steps_for :javascript do
     page.execute_script %Q{
       $('body').focus;
       if((selector = $('##{selector}')).length || ($selector = $('label:contains(#{selector})').parent().find(':input')).length) {
-          $selector.click().val('#{options[:with]}').focus().keydown().keyup();
+          $selector.val('#{options[:with]}').focus();
       } else {
           throw 'Selector (#{selector}) not found';
       }
@@ -29,7 +29,7 @@ steps_for :javascript do
       extras.each do |extra|
         case extra
         when 'mask'
-          expect(find_field(field)['pt-mask']).to be_present,
+          expect(find_field(field)['mask']).to be_present,
             "No mask was found for: #{field}"
         when 'validate-cc'
           expect(find_field(field)['pt-validate-cc']).not_to be_nil,

@@ -2,17 +2,15 @@ class ClaimForm < Reform::Form
   model :claim
 
   validates_presence_of :number, :appraisal_author, :estimate_written_on,
-    :type_of_loss, :point_of_impact, :review_type
+    :type_of_loss, :point_of_impact, :review_type, :negotiator
 
   validates :deductible, numericality: true, presence: true
-
-  property :negotiator, empty: true
 
   properties [
     :id, :request_type, :suffix, :review_type, :number, :carrier_number,
     :is_total_loss, :primary_client_contact_id, :appraisal_author,
     :estimate_written_on, :type_of_loss, :point_of_impact,
-    :deductible
+    :deductible, :negotiator
   ]
 
   # Associations
@@ -28,12 +26,5 @@ class ClaimForm < Reform::Form
 
   property :owner do
     properties [:first_name, :last_name]
-  end
-
-  def negotiators
-    {
-      acd: 'ACD',
-      client: 'Client'
-    }
   end
 end

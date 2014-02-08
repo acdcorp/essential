@@ -1,7 +1,7 @@
 = f.input :appraisal_author, collection: Claim.appraisal_author.values,
-  prompt: 'Please Choose One', label_method: ->(a) { a.text.titleize }
-= f.input :estimate_written_on
+  prompt: true, label_method: ->(a) { a.text.titleize }
+= f.input :estimate_written_on, input_html: { date: 'MM/dd/yyyy' }
 = f.input :type_of_loss, collection: Claim.type_of_loss.values,
-  prompt: 'Please Choose One', label_method: ->(a) { a.text.titleize }
+  prompt: true, label_method: ->(a) { a.text.titleize }
 = f.input :point_of_impact
 = f.input :deductible

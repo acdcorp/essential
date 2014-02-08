@@ -1,40 +1,36 @@
-/ Logo
-.logo
-  %img{alt: "logo", src: "/assets/logo.png"}
-/ /Logo
-/ Login Box
-.box
-  .content
-    / Login Formular
-    = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'login-form' } }) do |f|
-      / Title
-      %h3.form-title Sign In to your Account
-      / Error Message
-      = render partial: 'devise/shared/alerts'      
-      / Input Fields
-      .form-group{class: "#{resource.errors.messages[:email].present? ? "has_error" : ""}"}
-        / <label for="username">Username:</label>
-        .input-icon
-          %i.icon-envelope
-          = f.input_field :email, autofocus: true, "data-msg-required" => "Please enter your email.", "data-rule-required" => "true", placeholder: "Email", type: "text"      
-      .form-group{class: "#{resource.errors.messages[:password].present? ? "has_error" : ""}"}
-        / <label for="password">Password:</label>
-        .input-icon
-          %i.icon-lock
-          = f.input_field :password, "data-msg-required" => "Please enter your password.", "data-rule-required" => "true", placeholder: "Password", type: "password"
-      / /Input Fields
-      / Form Actions
-      .form-actions
-        %label.checkbox.pull-left
-          %input.uniform{name: "remember_me", type: "checkbox"}/
-          Remember me
-        %button.submit.btn.btn-primary.pull-right{type: "submit"}
-          Sign In
-          %i.icon-angle-right
-    / /Login Formular
-  / /.content
-  / Links
-
-  .inner-box
-    .content
-      = link_to "Forgot your password?", new_password_path(resource_name)
+#login.container
+  .row
+    .col-md-4.col-md-offset-7
+      .panel.panel-default
+        .panel-heading
+          %span.fa.fa-lock
+          Login
+        .panel-body
+          .logo.col-sm-offset-3.col-sm-9.col-md-offset-3.col-md-9
+            = image_tag 'logo.png'
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'form-horizontal' } }) do |f|
+            .form-group
+              %label.col-sm-3.control-label{for: "inputEmail3"}
+                Email
+              .col-sm-9
+                = f.input_field :email, autofocus: true, "data-msg-required" => "Please enter your email.", "data-rule-required" => "true", placeholder: "Email", type: "email", class: 'form-control', id: 'inputEmail3'
+            .form-group
+              %label.col-sm-3.control-label{for: "inputPassword3"}
+                Password
+              .col-sm-9
+                = f.input_field :password, "data-msg-required" => "Please enter your password.", "data-rule-required" => "true", placeholder: "Password", type: "password", id: 'inputPassword3', class: 'form-control'
+            .form-group
+              .col-sm-offset-3.col-sm-9
+                .checkbox
+                  %label
+                    %input{name: "remember_me", type: "checkbox"}/
+                    Remember me
+            .form-group.last
+              .col-sm-offset-3.col-sm-9
+                %button.btn.btn-success.btn-sm{type: "submit"}
+                  Sign in
+                -# %button.btn.btn-default.btn-sm{type: "reset"}
+                -#   Reset
+        .panel-footer
+          Forgot your password?
+          = link_to "Click Here.", new_password_path(resource_name)

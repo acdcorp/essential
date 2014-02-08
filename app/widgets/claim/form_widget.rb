@@ -21,7 +21,6 @@ class Claim::FormWidget < Apotomo::Widget
   def submit_claim data
     has_id = form.id
 
-    ap data[:claim]
     if form.validate data[:claim]
       form.save_as(current_user) do |nested|
         # Do not create an owner record if one wasn't entered

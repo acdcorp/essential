@@ -2,7 +2,7 @@ require 'spec_helper'
 
 steps_for :screenshot do
   after :each, screenshot: true do
-    take_screenshot 'debug'
+    take_screenshot 'debug', full: true
   end
 end
 

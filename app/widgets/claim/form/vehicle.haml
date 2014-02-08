@@ -1,6 +1,6 @@
 = widget_div id: 'claim-vehicle' do
   = f.simple_fields_for :vehicle do |v|
-    = v.input :year
+    = v.input :year, collection: (1900..(Date.today.year+2)).to_a.reverse!
     = v.input :make
     = v.input :model_name, label: 'Model'
-    = v.input :vin
+    = v.input :vin, input_html: { mask: '*****************' }

@@ -15,7 +15,6 @@ Bundler.require(*Rails.groups)
 
 module Subrolink
   class Application < Rails::Application
-    config.lograge.enabled = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -28,6 +27,5 @@ module Subrolink
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths += %W(#{config.root}/app/forms #{config.root}/app/models/permissions  #{config.root}/lib)
-    config.assets.precompile += ['pt/better-dom/dist/better-dom-legacy.htc', 'pt/better-dom/dist/better-dom-legacy.js']
   end
 end

@@ -1,0 +1,3 @@
+[submodule "essential"]
+	path = essential
+	url = git@github.com:acdcorp/essential.git

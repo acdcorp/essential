@@ -6,8 +6,8 @@ module AuthSteps
 
     visit login_path
 
-    fill_in 'user_email', with: current_user.email
-    fill_in 'user_password', with: 'pass'
+    fill_in 'Email', with: current_user.email
+    fill_in 'Password', with: 'pass'
 
     click_button 'Sign in'
   end

@@ -5,6 +5,6 @@ module SidebarSteps
   end
 
   step 'It should be selected' do
-    expect(find('#sidebar li.current')).to have_content 'CREATE CLAIM'
+    expect(find('#sidebar ul.nav-sidebar li.active')).to have_content 'Create Claim'
   end
 end
