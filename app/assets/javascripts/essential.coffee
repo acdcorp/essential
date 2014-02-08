@@ -62,16 +62,16 @@ $ ->
   # Load all the live attr events
   for selector, events of essentialAttrList
     for event, func of events
-      break if event == 'init'
-      essentialAttr selector, event,
-        trigger: func
-    essentialAttr selector, 'init', { init: events.init } if events.init
+      unless event == 'init'
+        essentialAttr selector, event,
+          init: events.init
+          trigger: func
 
 # The magic method
 window.essentialAttr = (selector, event, callback) ->
   addAttr = ->
     attr = selector.replace(/[^a-zA-Z-]/g, '')
-    key  = "essentialAttr-#{attr}"
+    key  = "essentialAttr-#{attr}-#{event}"
 
     $(selector).each ->
       $el = $ @
