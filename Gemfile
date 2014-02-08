@@ -41,7 +41,7 @@ group :development, :test do
   gem 'spring', '~> 1.1.0'
   gem 'spring-commands-rspec', '~> 1.0.1'
   # replace erb files with haml: rake haml:replace_erbs
-  gem "erb2haml", '~> 0.1.5'
+  # gem "erb2haml", '~> 0.1.5'
   gem 'factory_girl_rails', '>= 4.2.1'
   gem 'pry', '~> 0.9.12.6'
   gem 'faker', '~> 1.2.0'

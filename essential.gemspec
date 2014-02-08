@@ -25,6 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "awesome_print"
   spec.add_dependency "pry"
   spec.add_dependency "dotenv-rails"
-  spec.add_dependency "sqlite3"
   spec.add_dependency "database_cleaner"
 end

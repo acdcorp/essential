@@ -2,13 +2,16 @@ module Essential
   class Engine < ::Rails::Engine
     isolate_namespace Essential
 
-    initializer "Essential add to autoload", :group => :all do |app|
+    initializer "Essential add to autoload", before: :set_autoload_paths do |app|
       app.config.autoload_paths += %W(#{app.config.root}/app/presenters #{app.config.root}/lib/essential)
       app.config.autoload_paths += %W(#{app.config.root}/app/forms #{app.config.root}/app/models/permissions #{app.config.root}/lib)
       app.config.autoload_paths += Dir["#{app.config.root}/app/forms/*"].find_all { |f| File.stat(f).directory?  }
       app.config.autoload_paths += Dir["#{app.config.root}/app/forms/*/*"].find_all { |f| File.stat(f).directory?  }
       app.config.assets.paths << Rails.root.join('app', 'assets', 'files')
       app.config.assets.paths << Rails.root.join('app', 'assets', 'bower_components')
+      app.config.assets.precompile = [
+        /application.(css|js|less|sass|scss|coffee)$/
+      ]
     end
 
     initializer "Essential add to config", group: :test do |app|
