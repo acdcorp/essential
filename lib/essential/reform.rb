@@ -34,6 +34,9 @@ module Reform
                   form.from_hash params[column]
                   is_valid &= form.valid?
                   errors.merge!(form.errors, column)
+
+                  is_valid &= form.model.valid?
+                  errors.merge!(form.model.errors, column)
                 end
               else
                 is_valid &= validate_for form.send(:fields), nested_params, is_valid
