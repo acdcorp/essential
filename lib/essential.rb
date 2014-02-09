@@ -2,6 +2,7 @@ require 'hooks'
 require 'reform'
 require 'apotomo'
 require 'simple_form'
+require 'pt_form'
 require "essential/engine"
 require "essential/helpers/common"
 require "essential/helpers/ui"
@@ -15,6 +16,8 @@ require "essential/reform"
 require "essential/nav"
 require "essential/diagnostic"
 require "essential/controller"
+require "essential/search"
+require "essential/searchable"
 
 module Essential
 end

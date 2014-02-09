@@ -30,6 +30,14 @@ group :doc do
   gem 'sdoc', '~> 0.4.0', require: false
 end
 
+group :staging, :production do
+# Rails 4 requires a gem rails_12factor in order to configure your application logs to be visible via heroku logs and to serve static assets.
+  gem 'rails_12factor'
+  gem 'heroku_rails_deflate'
+  gem 'rack-cache'
+  gem 'kgio' #recommended by heroku for faster IO with rack cache
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta1'
 
@@ -61,6 +69,7 @@ group :test do
   gem 'capybara', '~> 2.2.1'
   gem 'capybara-firebug', '~> 2.0.0'
   gem 'turnip', github: 'cj/turnip'
+  gem 'webmock', '~> 1.17.2'
 end
 
 gem 'unicorn', '~> 4.8.2'
@@ -77,6 +86,8 @@ gem 'reform', '~> 0.2.4'
 gem 'exception_notification', '~> 4.0.1'
 gem 'simple_form', '~> 3.0.1'
 gem 'mab', '~> 0.0.3'
+gem 'scoped_search', '~> 2.6.1'
+gem 'chronic', github: 'mojombo/chronic'
 
 ### THEME ###
 gem 'therubyracer', '~> 0.12.1'

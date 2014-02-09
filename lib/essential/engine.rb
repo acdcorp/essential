@@ -28,6 +28,7 @@ module Essential
     initializer "Add Essential Helpers To Controller" do
       ActiveSupport.on_load(:action_controller) do
         helper Essential::Engine.helpers
+        include Apotomo::Rails::ControllerMethods
       end
     end
 
