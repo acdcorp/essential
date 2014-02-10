@@ -1,12 +1,34 @@
 module Reform
   class Form
+    include Hooks
     include Reform::Form::ActiveRecord
     include Reform::Form::ActiveModel
     include Reform::Form::ActiveModel::FormBuilderMethods
 
     property :id
 
+    define_hooks :before_create, :after_create, :before_update, :after_update,
+      :before_save, :after_save
+
+    def initialize(model)
+      if model.kind_of? ::ActiveRecord::Base
+        @model = model
+      else
+        @model = self.class.model_name.singular.classify.constantize.new model
+      end
+
+      @fields = setup_fields(@model)  # delegate all methods to Fields instance.
+    end
+
     module ValidateMethods # TODO: introduce Base module.
+      def validates? params = {}
+        validate(params)
+      end
+
+      def validates params = {}
+        validate(params)
+      end
+
       def validate(params)
         params = params.with_indifferent_access
         # here it would be cool to have a validator object containing the validation rules representer-like and then pass it the formed model.
@@ -53,13 +75,31 @@ module Reform
       form = self
 
       save do |data, nested|
-        nested = nested.with_indifferent_access
+        nested = OpenStruct.new nested
+
+        nested_id = false
+
+        if nested_id = nested.id
+          form.run_hook :before_update, nested, data
+        else
+          form.run_hook :before_create, nested, data
+        end
+
+        form.run_hook :before_save, nested, data
 
         block.call nested, data if block
-        model.attributes = append_attributes nested.dup
+        model.attributes = append_attributes nested.to_h.dup
         add_creator_and_updater_for model, current_user, nested
         model.save!
         form.id = model.id unless form.id
+
+        if nested_id
+          form.run_hook :after_update, nested, data
+        else
+          form.run_hook :after_create, nested, data
+        end
+
+        form.run_hook :after_save, nested, data
       end
     end
 
