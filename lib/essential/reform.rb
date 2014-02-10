@@ -7,6 +7,8 @@ module Reform
 
     property :id
 
+    attr_accessor :params
+
     define_hooks :before_create, :after_create, :before_update, :after_update,
       :before_save, :after_save
 
@@ -75,31 +77,31 @@ module Reform
       form = self
 
       save do |data, nested|
-        nested = OpenStruct.new nested
+        form.params = OpenStruct.new nested
 
         nested_id = false
 
-        if nested_id = nested.id
-          form.run_hook :before_update, nested, data
+        if nested_id = form.params.id
+          form.run_hook :before_update
         else
-          form.run_hook :before_create, nested, data
+          form.run_hook :before_create
         end
 
-        form.run_hook :before_save, nested, data
+        form.run_hook :before_save
 
-        block.call nested, data if block
-        model.attributes = append_attributes nested.to_h.dup
-        add_creator_and_updater_for model, current_user, nested
+        block.call if block
+        model.attributes = append_attributes form.params.to_h.dup
+        add_creator_and_updater_for model, current_user, form.params
         model.save!
         form.id = model.id unless form.id
 
         if nested_id
-          form.run_hook :after_update, nested, data
+          form.run_hook :after_update
         else
-          form.run_hook :after_create, nested, data
+          form.run_hook :after_create
         end
 
-        form.run_hook :after_save, nested, data
+        form.run_hook :after_save
       end
     end
 
