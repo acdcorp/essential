@@ -12,14 +12,15 @@ module Reform
     define_hooks :before_create, :after_create, :before_update, :after_update,
       :before_save, :after_save
 
-    def initialize(model)
+    def initialize(model = false)
       if model.kind_of? ::ActiveRecord::Base
         @model = model
+        @fields = setup_fields(@model)  # delegate all methods to Fields instance.
       else
-        @model = self.class.model_name.singular.classify.constantize.new model
+        @model = self.class.model_name.singular.classify.constantize.new
+        @fields = Fields.new(model.keys, model) if model
       end
 
-      @fields = setup_fields(@model)  # delegate all methods to Fields instance.
     end
 
     module ValidateMethods # TODO: introduce Base module.
@@ -90,9 +91,13 @@ module Reform
         form.run_hook :before_save
 
         block.call if block
-        model.attributes = append_attributes form.params.to_h.dup
+
+        input_representer = mapper.new(self).extend(Sync::InputRepresenter)
+        model.attributes  = append_attributes(input_representer.to_hash)
         add_creator_and_updater_for model, current_user, form.params
+
         model.save!
+
         form.id = model.id unless form.id
 
         if nested_id
