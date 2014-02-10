@@ -14,13 +14,12 @@ module Reform
 
     def initialize(model = false)
       if model.kind_of? ::ActiveRecord::Base
-        @model = model
-        @fields = setup_fields(@model)  # delegate all methods to Fields instance.
+        @model  = model
+        @fields = setup_fields(@model)
       else
-        @model = self.class.model_name.singular.classify.constantize.new
-        @fields = Fields.new(model.keys, model) if model
+        @model  = self.class.model_name.singular.classify.constantize.new
+        @fields = model ? Fields.new(model.keys, model) : setup_fields(@model)
       end
-
     end
 
     module ValidateMethods # TODO: introduce Base module.
