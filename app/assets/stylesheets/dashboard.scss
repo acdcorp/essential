@@ -11,6 +11,9 @@ body {
 }
 
 #header {
+  a {
+    color: $body-bg;
+  }
   border-bottom: 4px solid rgba(#000, .2);
   .navbar-header {
     border-right: 4px solid rgba(#000, .2);
@@ -25,6 +28,7 @@ body {
   > .container-fluid {
     padding-left: 0;
   }
+  background-color: $navbar-default-bg;
 }
 
 #breadcrumbs {
@@ -41,6 +45,10 @@ body {
     font-size: $font-size-small;
     z-index: 1;
     width: 100%;
+    background-color: $brand-secondary;
+    a {
+      color: $body-bg;
+    }
   }
   .page-header {
     margin: 60px $grid-gutter-width 0 $grid-gutter-width;
@@ -52,6 +60,11 @@ body {
 }
 
 #sidebar {
+  .nav {
+    .nav {
+      display: none;
+    }
+  }
   > ul {
     border-right: 4px solid rgba(#333, 0.2);
   }
