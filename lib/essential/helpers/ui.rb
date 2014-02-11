@@ -14,20 +14,22 @@ module Essential
         options = options.with_indifferent_access
 
         html do
-          div do
-            helper.render partial: 'layouts/breadcrumbs'
-          end
-          div class: 'page-header' do
-            if title
-              div class: 'page-title' do
-                h3 do
-                  if options.key? :icon
-                    fa_icon options[:icon]
-                  end
-                  text title
-                  if options.key? :sub_text
-                    span do
-                      text options[:sub_text]
+          div id: 'page-header' do
+            div id: :breadcrumbs do
+              helper.render partial: 'layouts/breadcrumbs'
+            end
+            div class: 'page-header' do
+              if title
+                div class: 'page-title' do
+                  h3 do
+                    if options.key? :icon
+                      fa_icon options[:icon]
+                    end
+                    text title
+                    if options.key? :sub_text
+                      span do
+                        text options[:sub_text]
+                      end
                     end
                   end
                 end

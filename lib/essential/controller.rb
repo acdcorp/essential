@@ -1,4 +1,6 @@
 ActionController::Base.class_eval do
+  layout :set_layout
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -12,6 +14,14 @@ ActionController::Base.class_eval do
     url
   end
   helper_method :previous_url
+
+  def set_layout
+    if user_signed_in?
+      "application"
+    else
+      "login"
+    end
+  end
 
   protected
 

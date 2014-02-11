@@ -12,6 +12,7 @@ module Essential
       app.config.assets.precompile = [
         /application.(css|js|less|sass|scss|coffee)$/
       ]
+      app.config.paths["app/views"] << "#{app.config.root}/essential/app/views"
     end
 
     initializer "Essential add to config", group: :test do |app|
