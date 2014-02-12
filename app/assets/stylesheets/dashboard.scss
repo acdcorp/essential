@@ -22,7 +22,8 @@ body {
 }
 
 #content {
-  margin-bottom: $grid-gutter-width;
+  position: absolute;
+  padding-bottom: $grid-gutter-width;
 }
 
 #header {
