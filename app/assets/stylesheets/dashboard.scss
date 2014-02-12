@@ -6,6 +6,21 @@ body {
   padding-top: 50px;
 }
 
+#container {
+  padding: 0;
+  .sidebar-nav-fixed {
+    position:fixed;
+    top:49px;
+    bottom: 0;
+    width:225px;
+  }
+
+  .row-fluid > .span-fixed-sidebar {
+     margin-left: 225px;
+  }
+
+}
+
 #content {
   margin-bottom: $grid-gutter-width;
 }
@@ -14,9 +29,13 @@ body {
   a {
     color: $body-bg;
   }
-  border-bottom: 4px solid rgba(#000, .2);
+  a:hover {
+    color: $gray-dark;
+  }
+  border-bottom: 4px solid rgba($gray-dark, .2);
   .navbar-header {
-    border-right: 4px solid rgba(#000, .2);
+    width:225px;
+    border-right: 4px solid rgba($gray-dark, .2);
     position: absolute;
     height: 45px;
     .navbar-nav {
@@ -34,12 +53,21 @@ body {
 #breadcrumbs {
   padding: 0;
   margin-top: -2px;
+  margin: 0;
+  position: fixed;
+  top: 49px;
+  margin-left: -10px;
+  height: 43px;
+  font-size: $font-size-small;
+  z-index: 1;
+  width: 100%;
+  background-color: $brand-secondary;
   .breadcrumb {
+    border-left: $brand-secondary;
+    border-right: $brand-secondary;
+    border-top: 0;
     margin: 0;
     position: fixed;
-    top: 48px;
-    margin-left: -25px;
-    border-left: 0;
     height: 43px;
     padding-top: 13px;
     font-size: $font-size-small;
@@ -60,21 +88,25 @@ body {
 }
 
 #sidebar {
+  z-index: 2;
+  border-right: 4px solid $gray-darkest;
+  > .nav-tabs {
+    background-color: $brand-secondary;
+  }
+
   .nav {
     .nav {
       display: none;
     }
   }
-  > ul {
-    border-right: 4px solid rgba(#333, 0.2);
-  }
   .tab-content {
     width: 100%;
     position: absolute;
-    top: 90px;
+    top: 43px;
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: $gray-lightest;
   }
   #menu {
     .nav-sidebar {
@@ -86,15 +118,22 @@ body {
 
   .nav-sidebar {
     li {
-      > a {
-        border-right: 4px solid rgba(#333, 0.2);
+      border-bottom: 1px solid $gray-lighter;
+    }
+    a {
+      color: $gray-darker;
+      i {
+        color: $brand-primary;
+      }
+      .pull-right {
+        margin-top: 3px;
       }
     }
     .active {
       > a, > a:hover {
-        color: #222;
+        color: $gray-darker;
         background-color: #fff;
-        border-right: 4px solid $brand-primary;
+        // border-right: 4px solid $brand-primary;
       }
     }
   }
@@ -103,7 +142,7 @@ body {
 // header
 .navbar-brand {
   border-right: 4px solid opacity(0.2);
-  padding: 8px 0 0 13px;
+  padding: 10px 0 0 15px;
 }
 
 /*
@@ -134,7 +173,7 @@ body {
     z-index: 1000;
     display: block;
     padding: 48px 0;
-    background-color: #f5f5f5;
+    background-color: rgba($gray-darkest, .1);
   }
 }
 

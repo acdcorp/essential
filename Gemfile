@@ -90,8 +90,8 @@ gem 'scoped_search', '~> 2.6.1'
 gem 'chronic', github: 'mojombo/chronic'
 
 ### THEME ###
-gem 'therubyracer', '~> 0.12.1'
 gem 'font-awesome-rails', '~> 4.0.3.1'
 gem 'bootstrap-sass', '~> 3.1.0.2'
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
+gem 'execjs'
