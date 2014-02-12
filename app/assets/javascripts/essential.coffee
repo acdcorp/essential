@@ -9,6 +9,15 @@
 #= require moment
 #= require bootstrap-datetimepicker
 
+toggleSubNav = ->
+  if @data @key
+    @parent().find('ul').slideDown()
+    @parent().addClass 'active'
+  else
+    @parent().removeClass 'active'
+    @parent().find('ul').slideUp()
+    @removeData @key
+
 essentialAttrList =
   '[on-change-get]':
     change: (url) -> $.ajax url: "#{url}&value=#{@val()}"
@@ -17,23 +26,22 @@ essentialAttrList =
     click: (url) -> $.ajax url: url
 
   '[toggle-subnav]':
-    toggle: ->
-      console.log @
-      if @data @key
-        @find('ul').slideDown()
-        console.log 'open'
-        @data @key, false
-      else
-        @find('ul').slideUp()
-        @data @key, true
-        console.log 'close'
-
-    init: (val, cb) ->
+    init: ->
       @key = 'toggled-subnav'
-      @data @key, (if @hasClass('active') then true else false)
-      cb.toggle.call @
+      @data @key, (if @parent().hasClass('active') then true else false)
 
-    click: (id) -> cb.toggle.call @
+    click: (id) ->
+      unless @parent().hasClass 'active'
+        @closest('ul').find('li a').removeClass 'active-on-load'
+        @closest('ul').find('li').removeClass 'active'
+        @closest('ul').find('li i.pull-right').removeClass 'fa-caret-down'
+        @closest('ul').find('li i.pull-right').addClass 'fa-caret-left'
+        @closest('ul').find('ul').slideUp()
+        console.log @parent()
+        @parent().find('i.pull-right').removeClass 'fa-caret-left'
+        @parent().find('i.pull-right').addClass 'fa-caret-down'
+        @data @key, true
+        toggleSubNav.call @
 
   '[toggle-sidebar]':
     init: ->
@@ -96,11 +104,11 @@ window.essentialAttr = (selector, event, callback) ->
       $el = $ @
 
       unless $el.data key
-        callback.init?.call $el, $el.att(attr), callback
+        callback.init?.call $el, $el.attr attr
 
         unless event is 'init'
           $el.bind event, ->
-            callback.trigger?.call $el, $el.attr(attr), callback
+            callback.trigger?.call $el, $el.attr attr
             false
 
         $el.data key, true

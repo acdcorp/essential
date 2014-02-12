@@ -107,6 +107,14 @@ body {
   .nav {
     .nav {
       display: none;
+      li a {
+        padding-left: $grid-gutter-width * 3;
+      }
+    }
+    .active-on-load {
+      .nav {
+        display: block;
+      }
     }
   }
   .tab-content {
@@ -130,6 +138,10 @@ body {
   .nav-sidebar {
     li {
       border-bottom: 1px solid $gray-lighter;
+      li {
+        border-top: 1px solid $gray-lighter;
+        border-bottom: none;
+      }
     }
     a {
       color: $gray-darker;
