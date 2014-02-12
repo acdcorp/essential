@@ -92,6 +92,16 @@ body {
   border-right: 4px solid $gray-darkest;
   > .nav-tabs {
     background-color: $brand-secondary;
+    li {
+      a {
+        background-color: $gray-lightest;
+      }
+      &.active {
+        a {
+          background-color: $body-bg;
+        }
+      }
+    }
   }
 
   .nav {
@@ -100,6 +110,7 @@ body {
     }
   }
   .tab-content {
+    border-top: 1px solid $gray-lighter;
     width: 100%;
     position: absolute;
     top: 43px;

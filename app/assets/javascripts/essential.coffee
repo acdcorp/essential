@@ -16,6 +16,25 @@ essentialAttrList =
   '[on-click-get]':
     click: (url) -> $.ajax url: url
 
+  '[toggle-subnav]':
+    toggle: ->
+      console.log @
+      if @data @key
+        @find('ul').slideDown()
+        console.log 'open'
+        @data @key, false
+      else
+        @find('ul').slideUp()
+        @data @key, true
+        console.log 'close'
+
+    init: (val, cb) ->
+      @key = 'toggled-subnav'
+      @data @key, (if @hasClass('active') then true else false)
+      cb.toggle.call @
+
+    click: (id) -> cb.toggle.call @
+
   '[toggle-sidebar]':
     init: ->
       @key = 'toggled-sidebar'
@@ -77,11 +96,11 @@ window.essentialAttr = (selector, event, callback) ->
       $el = $ @
 
       unless $el.data key
-        callback.init?.call $el, $el.attr attr
+        callback.init?.call $el, $el.att(attr), callback
 
         unless event is 'init'
           $el.bind event, ->
-            callback.trigger?.call $el, $el.attr attr
+            callback.trigger?.call $el, $el.attr(attr), callback
             false
 
         $el.data key, true
