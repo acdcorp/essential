@@ -15,7 +15,7 @@ module Essential
       app.config.paths["app/views"] << "#{app.config.root}/essential/app/views"
     end
 
-    initializer "Essential add to config", group: :test do |app|
+    initializer "Essential add to config", before: :set_autoload_paths, group: :test do |app|
       app.config.middleware.use(Essential::DiagnosticMiddleware)
     end
 

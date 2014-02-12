@@ -17,5 +17,18 @@ body.login {
   .logo {
     margin-bottom: $grid-gutter-width - 10;
   }
+
+  .panel-heading {
+    background-color: $gray;
+    color: $body-bg;
+    i {
+      font-size: 27px;
+    }
+  }
+
+  .panel-footer {
+    background-color: $brand-secondary;
+    color: $body-bg;
+  }
 }
 

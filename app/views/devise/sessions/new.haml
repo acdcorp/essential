@@ -1,14 +1,13 @@
-= resource_name
 #login.container
   .row
     .col-md-6.col-md-offset-3
       .panel.panel-default
         .panel-heading
-          %span.fa.fa-lock
-          Login
+          %span.logo
+            = image_tag 'logo.png'
+          = fa_icon :lock, class: 'pull-right'
         .panel-body
           .logo.col-sm-offset-3.col-sm-9.col-md-offset-3.col-md-9
-            = image_tag 'logo.png'
           = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: 'form-horizontal' } }) do |f|
             .form-group
               %label.col-sm-3.control-label{for: "inputEmail3"}
@@ -28,7 +27,7 @@
                     Remember me
             .form-group.last
               .col-sm-offset-3.col-sm-9
-                %button.btn.btn-success.btn-sm{type: "submit"}
+                %button.btn.btn-primary.btn-sm{type: "submit"}
                   Sign in
                 -# %button.btn.btn-default.btn-sm{type: "reset"}
                 -#   Reset
