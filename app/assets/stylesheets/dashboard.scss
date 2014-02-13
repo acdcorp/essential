@@ -10,7 +10,7 @@ body {
   padding: 0;
   .sidebar-nav-fixed {
     position:fixed;
-    top:49px;
+    top:54px;
     bottom: 0;
     width:225px;
   }
@@ -31,14 +31,15 @@ body {
     color: $body-bg;
   }
   a:hover {
-    color: $gray-dark;
+    color: $brand-primary !important;
+    background-color: transparent !important;
   }
-  border-bottom: 4px solid rgba($gray-dark, .2);
+  border-bottom: 4px solid rgba($gray-darker, .5);
   .navbar-header {
     width:225px;
-    border-right: 4px solid rgba($gray-dark, .2);
+    border-right: 4px solid rgba($gray-darker, .5);
     position: absolute;
-    height: 45px;
+    // height: 45px;
     .navbar-nav {
       position: absolute;
       top: 0;
@@ -53,23 +54,19 @@ body {
 
 #breadcrumbs {
   padding: 0;
-  margin-top: -2px;
   margin: 0;
   position: fixed;
-  top: 49px;
+  top: 54px;
   margin-left: -10px;
-  height: 43px;
+  height: 41px;
   font-size: $font-size-small;
   z-index: 1;
   width: 100%;
   background-color: $brand-secondary;
   .breadcrumb {
-    border-left: $brand-secondary;
-    border-right: $brand-secondary;
-    border-top: 0;
     margin: 0;
     position: fixed;
-    height: 43px;
+    height: 44px;
     padding-top: 13px;
     font-size: $font-size-small;
     z-index: 1;
@@ -90,12 +87,13 @@ body {
 
 #sidebar {
   z-index: 2;
-  border-right: 4px solid $gray-darkest;
+  border-right: 4px solid $gray-dark;
   > .nav-tabs {
     background-color: $brand-secondary;
+    border-bottom: 3px solid $table-border-color;
     li {
       a {
-        background-color: $gray-lightest;
+        background-color: $gray-lighter;
       }
       &.active {
         a {
@@ -119,14 +117,13 @@ body {
     }
   }
   .tab-content {
-    border-top: 1px solid $gray-lighter;
     width: 100%;
     position: absolute;
-    top: 43px;
+    top: 44px;
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: $gray-lightest;
+    background-color: $gray-lighter;
   }
   #menu {
     .nav-sidebar {
@@ -138,9 +135,9 @@ body {
 
   .nav-sidebar {
     li {
-      border-bottom: 1px solid $gray-lighter;
+      border-bottom: 2px solid $table-border-color;
       li {
-        border-top: 1px solid $gray-lighter;
+        border-top: 1px solid $table-border-color;
         border-bottom: none;
       }
     }
@@ -197,7 +194,7 @@ body {
     z-index: 1000;
     display: block;
     padding: 48px 0;
-    background-color: rgba($gray-darkest, .1);
+    background-color: rgba($gray-darker, .1);
   }
 }
 

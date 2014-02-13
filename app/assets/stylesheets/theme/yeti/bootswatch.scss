@@ -15,14 +15,14 @@
     background-color: #b3b3b3;
   }
 
-  .collapse {
+  .navbar-collapse {
     border-top-color: $dropdown-divider-bg;
     @include box-shadow(none);
   }
 
   .dropdown {
 
-    .menu {
+    .dropdown-menu {
       border: none;
 
       > li > a,
@@ -33,13 +33,13 @@
       }
     }
 
-    .header {
+    .dropdown-header {
       color: rgba(255, 255, 255, 0.5);
     }
 
   }
 
-  .default {
+  .navbar-default {
 
     .dropdown-menu {
       background-color: $navbar-default-bg;
@@ -57,7 +57,7 @@
     }
   }
 
-  .inverse {
+  .navbar-inverse {
 
     .dropdown-menu {
       background-color: $navbar-inverse-bg;
@@ -81,15 +81,15 @@
 .btn {
   padding: 14px 28px;
 
-  .lg {
+  .btn-lg {
     padding: 16px 32px;
   }
 
-  .sm {
+  .btn-sm {
     padding: 8px 16px;
   }
 
-  .xs {
+  .btn-xs {
     padding: 4px 8px;
   }
 }
@@ -310,14 +310,12 @@ label,
     }
   }
 
-  .lg > li > a {
-    @extend .lg;
+  .pagination-lg > li > a {
     padding-left: 22px;
     padding-right: 22px;
   }
 
-  .sm > li > a {
-    @extend .sm;
+  .pagination-sm > li > a {
     padding: 0 5px;
   }
 }
@@ -353,8 +351,7 @@ label,
   border-radius: 0;
   font-weight: 300;
 
-  .default {
-    @extend .default;
+  .label-default {
     background-color: $btn-default-bg;
     color: $btn-default-color;
   }
@@ -378,8 +375,7 @@ label,
 
 .dropdown {
 
-  .menu {
-    @extend .menu;
+  .dropdown-menu {
     padding: 0;
     margin-top: 0;
     font-size: $font-size-small;
@@ -389,8 +385,7 @@ label,
     }
   }
 
-  .header {
-    @extend .header;
+  .dropdown-header {
     padding-left: 15px;
     padding-right: 15px;
     font-size: 9px;
@@ -405,10 +400,8 @@ label,
 }
 
 .panel {
-  .heading,
-  .footer {
-    @extend .header;
-    @extend .footer;
+  .panel-heading,
+  .panel-footer {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
   }

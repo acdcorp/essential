@@ -1,5 +1,7 @@
+@import "bootstrap/mixins";
+
 @import "variables";
-@import "theme/yeti/style";
+@import "theme/cerulean/style";
 
 @import "font-awesome";
 
@@ -9,7 +11,6 @@
 
 // Core CSS
 @import "bootstrap/variables";
-@import "bootstrap/mixins";
 @import "bootstrap/scaffolding";
 @import "bootstrap/type";
 @import "bootstrap/code";
@@ -51,5 +52,5 @@
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
-@import "theme/yeti/bootswatch";
+@import "theme/cerulean/bootswatch";
 @import "theme";
