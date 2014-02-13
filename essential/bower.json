@@ -1,0 +1,8 @@
+{
+  "name": "essential",
+    "dependencies": {
+    "jquery": "~1.10.2",
+    "bootbox": "*",
+    "lodash": "*"
+  }
+}
