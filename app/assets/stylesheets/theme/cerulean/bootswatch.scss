@@ -1,0 +1,321 @@
+// Cerulean 3.0.3
+// Bootswatch
+// -----------------------------------------------------
+
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+
+@mixin btn-shadow($color) {
+  @include gradient-vertical-three-colors(lighten($color, 8%), $color, 60%, darken($color, 4%));
+  filter: none;
+  border-bottom: 1px solid darken($color, 10%);
+}
+
+@mixin shadow($width: 4px) {
+  border-width: 0 1px $width 1px;
+}
+
+// Navbar =====================================================================
+
+.navbar {
+  border: none;
+  font-size: 13px;
+  font-weight: 300;
+
+  .navbar-toggle:hover .icon-bar {
+    background-color: #b3b3b3;
+  }
+
+  .navbar-collapse {
+    border-top-color: $dropdown-divider-bg;
+    @include box-shadow(none);
+  }
+
+  .dropdown {
+
+    .dropdown-menu {
+      border: none;
+
+      > li > a,
+      > li > a:focus {
+        background-color: transparent;
+        font-size: 13px;
+        font-weight: 300;
+      }
+    }
+
+    .dropdown-header {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+  }
+
+  .navbar-default {
+
+    .dropdown-menu {
+      background-color: $navbar-default-bg;
+
+      > li > a,
+      > li > a:focus {
+        color: $navbar-default-color;
+      }
+
+      > li > a:hover,
+      > .active > a,
+      > .active > a:hover {
+        background-color: $navbar-default-link-hover-bg;
+      }
+    }
+  }
+
+  .navbar-inverse {
+
+    .dropdown-menu {
+      background-color: $navbar-inverse-bg;
+
+      > li > a,
+      > li > a:focus {
+        color: $navbar-inverse-color;
+      }
+
+      > li > a:hover,
+      > .active > a,
+      > .active > a:hover {
+        background-color: $navbar-inverse-link-hover-bg;
+      }
+    }
+  }
+
+  @include btn-shadow($navbar-default-bg);
+  filter: none;
+  @include box-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
+
+  .navbar-nav > li > a,
+  .navbar-brand {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.navbar-inverse {
+  @include gradient-vertical-three-colors(lighten($navbar-inverse-bg, 8%), lighten($navbar-inverse-bg, 4%), 60%, darken($navbar-inverse-bg, 2%));
+  filter: none;
+  border-bottom: 1px solid darken($navbar-inverse-bg, 10%);
+}
+
+// Buttons ====================================================================
+
+.btn {
+
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+
+  .caret {
+    border-top-color: #fff;
+  }
+}
+
+%btn {
+  @include shadow();
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  &:hover {
+    margin-top: 1px;
+    border-bottom-width: 3px;
+  }
+
+  &:active {
+    margin-top: 2px;
+    border-bottom-width: 2px;
+    // @include box-shadow(none);
+  }
+}
+
+.btn { @extend %btn }
+
+.btn-default,
+.btn-default:hover,
+.btn-default:focus,
+.btn-group.open .dropdown-toggle.btn-default {
+  @extend %btn;
+  background-color: $btn-default-bg;
+  border-color: $btn-default-border;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-group.open .dropdown-toggle.btn-primary {
+  @extend %btn;
+  background-color: $btn-primary-bg;
+  border-color: darken($btn-primary-border, 5%);
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-group.open .dropdown-toggle.btn-success {
+  @extend %btn;
+  background-color: $btn-success-bg;
+  border-color: $btn-success-border;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-group.open .dropdown-toggle.btn-info {
+  @extend %btn;
+  background-color: $btn-info-bg;
+  border-color: $btn-info-border;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-group.open .dropdown-toggle.btn-warning {
+  @extend %btn;
+  background-color: $btn-warning-bg;
+  border-color: $btn-warning-border;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-group.open .dropdown-toggle.btn-danger {
+  @extend %btn;
+  background-color: $btn-danger-bg;
+  border-color: $btn-danger-border;
+}
+
+.btn-group.open .dropdown-toggle {
+  // @include box-shadow(none);
+}
+
+// Typography =================================================================
+
+// Tables =====================================================================
+
+// Forms ======================================================================
+
+// Navs =======================================================================
+
+.nav {
+  .open > a,
+  .open > a:hover,
+  .open > a:focus {
+    border-color: transparent;
+  }
+}
+
+.nav-tabs {
+  > li > a {
+    background-color: $btn-default-bg;
+    color: $text-color;
+  }
+
+  .caret {
+    border-top-color: $text-color;
+    border-bottom-color: $text-color;
+  }
+}
+
+.nav-pills {
+  font-weight: 300;
+}
+
+.breadcrumb {
+  border-bottom: 3px solid $table-border-color;
+  border-radius: 0px;
+  font-size: 10px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.pagination {
+  font-size: $font-size-small;
+  font-weight: 300;
+  color: $gray-light;
+
+  > li {
+    > a,
+    > span {
+      margin-left: 4px;
+      color: $gray-light;
+    }
+  }
+
+  > .active {
+    > a,
+    > span {
+      color: #fff;
+    }
+  }
+
+  > li,
+  > li:first-child,
+  > li:last-child {
+    > a,
+    > span {
+      border-radius: 3px;
+    }
+  }
+
+  .pagination-lg > li > a {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .pagination-sm > li > a {
+    padding: 0 5px;
+  }
+}
+
+.pager {
+  font-size: $font-size-small;
+  font-weight: 300;
+  color: $gray-light;
+}
+
+.list-group {
+  font-size: $font-size-small;
+  font-weight: 300;
+}
+
+// Indicators =================================================================
+
+// Progress bars ==============================================================
+
+// Containers =================================================================
+
+.dropdown {
+
+  .dropdown-menu {
+    padding: 0;
+    margin-top: 0;
+    font-size: $font-size-small;
+
+    > li > a {
+      padding: 12px 15px;
+    }
+  }
+
+  .dropdown-header {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 9px;
+    text-transform: uppercase;
+  }
+}
+
+.popover {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.panel-primary,
+.panel-success,
+.panel-warning,
+.panel-danger,
+.panel-info {
+
+  .panel-heading,
+  .panel-title {
+    color: #fff;
+  }
+}

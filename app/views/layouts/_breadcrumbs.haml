@@ -1,0 +1,16 @@
+- present :menu, Essential::Presenter::Nav do |nav|
+  %ol.breadcrumb
+    %li
+      %a{ href: '/' }
+        = fa_icon :home
+    - nav.items.each do |item|
+      - if item.is_active?
+        %li
+          %a{ href: item.path }
+            = item.title
+        - if item.children
+          - item.children.each do |child_item|
+            - if child_item.is_active?
+              %li.current
+                %a{ href: child_item.path }
+                  = child_item.title

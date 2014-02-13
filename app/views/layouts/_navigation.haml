@@ -1,0 +1,16 @@
+%ul.nav.nav-sidebar
+  - present :menu, Essential::Presenter::Nav do |nav|
+    - nav.items.each do |item|
+      %li{ class: (item.is_active? ? "active active-on-load" : "") }
+        %a{ href: item.path, 'toggle-subnav' => (item.children ? true : false) }
+          = fa_icon item.icon_class
+          #{item.title}
+          - if item.children and item.children.any?
+            = fa_icon (item.is_active?? 'caret-down' : 'caret-left'), class: 'pull-right'
+        - if item.children and item.children.any?
+          %ul.nav
+            - item.children.each do |child_item|
+              %li{ class: child_item.is_active? ? "active" : '' }
+                %a{ href: child_item.path }
+                  = fa_icon child_item.icon_class || 'caret-right'
+                  %span #{child_item.title}
