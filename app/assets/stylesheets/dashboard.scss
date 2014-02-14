@@ -14,6 +14,17 @@ span.has-error {
   margin-bottom: 5px !important;
 }
 
+.form-group.display {
+  > div {
+    padding-top: 7px;
+  }
+}
+
+.form-group.required {
+ > label > abbr {
+    color: $state-danger-text;
+  }
+}
 #container {
   padding: 0;
   .sidebar-nav-fixed {
