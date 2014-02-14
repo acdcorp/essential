@@ -3,7 +3,7 @@ module Essential
     include Apotomo::Rails::ControllerMethods
 
     helper Essential::Engine.helpers
-    helper FontAwesome::Rails::IconHelper
+    # helper FontAwesome::Rails::IconHelper
 
     layout :set_layout
 
