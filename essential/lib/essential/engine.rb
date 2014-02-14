@@ -23,13 +23,7 @@ module Essential
       ActiveSupport.on_load(:action_view) do
         include Essential::Helper::Common
         include Essential::Helper::Ui
-      end
-    end
-
-    initializer "Add Essential Helpers To Controller" do
-      ActiveSupport.on_load(:action_controller) do
-        helper Essential::Engine.helpers
-        include Apotomo::Rails::ControllerMethods
+        include FontAwesome::Rails::IconHelper
       end
     end
 

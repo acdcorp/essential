@@ -1,9 +1,17 @@
 @import 'bootstrap-datetimepicker';
-$grid-gutter-width: 10px;
 
 // Start
 body {
   padding-top: 50px;
+}
+
+.form-group {
+  margin-bottom: $grid-gutter-width - 5;
+}
+
+.help-block {
+  margin: 0 !important;
+  margin-bottom: 5px !important;
 }
 
 #container {
@@ -12,7 +20,7 @@ body {
     position:fixed;
     top:54px;
     bottom: 0;
-    width:225px;
+    width: 225px !important;
   }
 
   .row-fluid > .span-fixed-sidebar {
@@ -22,34 +30,44 @@ body {
 }
 
 #content {
+  .main {
+    padding: $grid-gutter-width !important;
+  }
   position: absolute;
-  padding-bottom: $grid-gutter-width;
 }
 
 #header {
-  a {
-    color: $body-bg;
-  }
-  a:hover {
-    color: $brand-primary !important;
-    background-color: transparent !important;
-  }
-  border-bottom: 4px solid rgba($gray-darker, .5);
+  // background-color: $navbar-default-bg;
+  // a {
+  //   color: $navbar-default-link-color;
+  // }
+  // a:hover {
+  //   color: $navbar-default-link-hover-color !important;
+  //   background-color: $navbar-default-link-hover-bg !important;
+  // }
+  border-bottom: 4px solid rgba($gray-darker, .2);
   .navbar-header {
-    width:225px;
-    border-right: 4px solid rgba($gray-darker, .5);
+    width: 225px;
+    border-right: 4px solid rgba($gray-darker, .2);
     position: absolute;
-    // height: 45px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
     .navbar-nav {
       position: absolute;
       top: 0;
       right: 0;
+      padding: 0 !important;
+      margin: 0 !important;
+      a {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+      }
     }
   }
   > .container-fluid {
     padding-left: 0;
   }
-  background-color: $navbar-default-bg;
 }
 
 #breadcrumbs {
@@ -58,23 +76,15 @@ body {
   position: fixed;
   top: 54px;
   margin-left: -10px;
-  height: 41px;
   font-size: $font-size-small;
   z-index: 1;
   width: 100%;
-  background-color: $brand-secondary;
   .breadcrumb {
     margin: 0;
     position: fixed;
-    height: 44px;
-    padding-top: 13px;
     font-size: $font-size-small;
     z-index: 1;
     width: 100%;
-    background-color: $brand-secondary;
-    a {
-      color: $body-bg;
-    }
   }
   .page-header {
     margin: 60px $grid-gutter-width 0 $grid-gutter-width;
@@ -82,22 +92,25 @@ body {
 }
 
 #page-header {
-  margin-top: $grid-gutter-width * 4;
+  margin-top: $grid-gutter-width * 5;
 }
 
 #sidebar {
   z-index: 2;
-  border-right: 4px solid $gray-dark;
+  border-right: 4px solid rgba($gray-darker, .2);
   > .nav-tabs {
-    background-color: $brand-secondary;
+    background-color: $gray-lighter;
     border-bottom: 3px solid $table-border-color;
     li {
       a {
-        background-color: $gray-lighter;
+        color: $text-color;
+        border-radius: 0px;
+        border-top: 0;
       }
       &.active {
         a {
-          background-color: $body-bg;
+          background-color: $nav-link-active-bg;
+          // border-right: 4px solid $brand-primary;
         }
       }
     }
@@ -119,7 +132,7 @@ body {
   .tab-content {
     width: 100%;
     position: absolute;
-    top: 44px;
+    top: 41px;
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
@@ -142,19 +155,22 @@ body {
       }
     }
     a {
-      color: $gray-darker;
-      i {
-        color: $brand-primary;
-      }
+      // color: $gray-darker;
+      // i {
+      //   color: $gray-lighter;
+      // }
       .pull-right {
         margin-top: 3px;
       }
     }
+    a:hover {
+      color: $nav-link-hover-color;
+    }
     .active {
+      border-right: 4px solid $brand-primary;
       > a, > a:hover {
-        color: $gray-darker;
-        background-color: #fff;
-        // border-right: 4px solid $brand-primary;
+        color: $brand-primary;
+        background-color: $nav-link-active-bg;
       }
     }
   }
@@ -164,6 +180,7 @@ body {
 .navbar-brand {
   border-right: 4px solid opacity(0.2);
   padding: 10px 0 0 15px;
+  margin-left: 0px !important;
 }
 
 /*
@@ -194,7 +211,7 @@ body {
     z-index: 1000;
     display: block;
     padding: 48px 0;
-    background-color: rgba($gray-darker, .1);
+    // background-color: rgba($gray-darker, .1);
   }
 }
 
