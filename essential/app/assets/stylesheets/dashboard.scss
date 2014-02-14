@@ -9,12 +9,9 @@ body {
   margin-bottom: $grid-gutter-width - 5;
 }
 
-.help-block {
+span.has-error {
   margin: 0 !important;
   margin-bottom: 5px !important;
-  > div {
-    padding: 0 !important;
-  }
 }
 
 #container {
