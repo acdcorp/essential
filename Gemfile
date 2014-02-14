@@ -36,6 +36,7 @@ group :staging, :production do
 end
 
 group :development, :test do
+  gem 'meta_request'
   gem 'rspec-rails', '~> 3.0.0.beta1'
 
   gem "better_errors", '~> 1.1.0'
@@ -78,7 +79,8 @@ gem 'enumerize', '~> 0.7.0'
 gem 'turbolinks', '~> 2.2.1'
 gem 'jquery-turbolinks', '~> 2.0.1'
 gem 'turbolinks-redirect', '~> 0.0.1'
-gem 'apotomo', '~> 1.2.5'
+gem 'cells', '~> 3.9.1'
+gem 'apotomo', github: 'apotonick/apotomo'
 gem 'reform', '~> 0.2.4'
 gem 'exception_notification', '~> 4.0.1'
 gem 'simple_form', '~> 3.0.1'
