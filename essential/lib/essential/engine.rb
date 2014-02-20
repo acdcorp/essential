@@ -4,7 +4,7 @@ module Essential
 
     initializer "Essential add to autoload", before: :set_autoload_paths do |app|
       app.config.autoload_paths += %W(#{app.config.root}/app/presenters #{app.config.root}/lib/essential)
-      app.config.autoload_paths += %W(#{app.config.root}/app/forms #{app.config.root}/app/models/permissions #{app.config.root}/lib)
+      app.config.autoload_paths += %W(#{app.config.root}/app/forms #{app.config.root}/app/widgets #{app.config.root}/app/models/permissions #{app.config.root}/lib)
       app.config.autoload_paths += Dir["#{app.config.root}/app/forms/*"].find_all { |f| File.stat(f).directory?  }
       app.config.autoload_paths += Dir["#{app.config.root}/app/forms/*/*"].find_all { |f| File.stat(f).directory?  }
       app.config.assets.paths << Rails.root.join('app', 'assets', 'files')
@@ -13,10 +13,10 @@ module Essential
         /application.(css|js|less|sass|scss|coffee)$/
       ]
       app.config.paths["app/views"] << "#{app.config.root}/essential/app/views"
-    end
 
-    initializer "Essential add to config", before: :set_autoload_paths, group: :test do |app|
-      app.config.middleware.use(Essential::DiagnosticMiddleware)
+      if Rails.env.test?
+        app.config.middleware.use(Essential::DiagnosticMiddleware)
+      end
     end
 
     initializer "Essential View Helpers" do
