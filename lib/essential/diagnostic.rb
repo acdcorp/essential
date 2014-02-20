@@ -19,10 +19,10 @@ module Essential
 
           ap msg
         end
-      end
-
-      Pry.rescue do
-        return @app.call(env)
+      else
+        Pry.rescue do
+          return @app.call(env)
+        end
       end
     end
   end

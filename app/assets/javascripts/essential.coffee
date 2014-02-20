@@ -1,4 +1,5 @@
-#= require jquery/jquery
+#= require jquery
+#= require jquery_ujs
 #= require bootstrap
 #= require turbolinks
 #= require jquery.turbolinks
@@ -37,7 +38,6 @@ essentialAttrList =
         @closest('ul').find('li i.pull-right').removeClass 'fa-caret-down'
         @closest('ul').find('li i.pull-right').addClass 'fa-caret-left'
         @closest('ul').find('ul').slideUp()
-        console.log @parent()
         @parent().find('i.pull-right').removeClass 'fa-caret-left'
         @parent().find('i.pull-right').addClass 'fa-caret-down'
         @data @key, true
@@ -84,6 +84,9 @@ essentialAttrList =
     init: (format) ->
       @datetimepicker
         pickTime: false
+
+  # 'form[data-remote]':
+  #   submit: -> $.ajax method: @attr('method'), url: @attr('action')
 
 $ ->
   # Load all the live attr events
