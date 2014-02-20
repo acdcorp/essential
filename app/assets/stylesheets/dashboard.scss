@@ -21,10 +21,11 @@ span.has-error {
 }
 
 .form-group.required {
- > label > abbr {
+  abbr {
     color: $state-danger-text;
   }
 }
+
 #container {
   padding: 0;
   .sidebar-nav-fixed {
