@@ -1,7 +1,7 @@
 module Reform
   class Form
     include Hooks
-    include Reform::Form::ActiveRecord
+    # include Reform::Form::ActiveRecord
     include Reform::Form::ActiveModel
     include Reform::Form::ActiveModel::FormBuilderMethods
 
@@ -38,6 +38,8 @@ module Reform
 
         is_valid = true
         is_valid &= valid?
+        is_valid &= model.valid?
+        errors.merge!(model.errors)
         is_valid &= validate_for @fields, params, is_valid
         is_valid
       end
@@ -145,12 +147,6 @@ module Reform
           end
         end
       end
-    end
-
-    def validate params
-      # So we can access the params passed, in other methods
-      @params = params
-      super params
     end
 
     class << self

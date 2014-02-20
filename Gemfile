@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0.beta1'
+gem 'rails', '4.1.0.rc1'
 
 # Specify your gem's dependencies in essential.gemspec
 
@@ -17,10 +17,8 @@ gem 'coffee-rails', '~> 4.0.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 3.1.0'
 
-group :assets do
-  gem 'sass-rails', '~> 4.0.1'
-  gem 'compass-rails', '~> 1.1.3'
-end
+gem 'sass-rails', '~> 4.0.1'
+gem 'compass-rails', '~> 1.1.3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -50,6 +48,8 @@ group :development, :test do
   # gem "erb2haml", '~> 0.1.5'
   gem 'factory_girl_rails', '>= 4.2.1'
   gem 'pry', '~> 0.9.12.6'
+  gem 'pry-rescue', '~> 1.4.0'
+  gem 'pry-stack_explorer'
   gem 'faker', '~> 1.2.0'
   gem 'require_reloader', '~> 0.2.0'
   gem 'bullet', '~> 4.7.1'
