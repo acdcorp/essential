@@ -91,7 +91,7 @@ module Reform
 
         form.run_hook :before_save
 
-        block.call if block
+        block.call form.params if block
 
         input_representer = mapper.new(self).extend(Sync::InputRepresenter)
         model.attributes  = append_attributes(input_representer.to_hash)

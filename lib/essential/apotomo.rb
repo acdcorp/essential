@@ -4,6 +4,14 @@ module Apotomo
   class Widget
     include Devise::Controllers::Helpers if defined? Devise
     helper_method :current_user
+
+    def flash
+      controller.controller.flash
+    end
+
+    def redirect_to path
+      controller.controller.response.headers['X-Widgets-Redirect'] = path
+    end
   end
 
   module JavascriptMethods
@@ -11,6 +19,7 @@ module Apotomo
       content = render(*args)
       Apotomo.js_generator.send(:modal, content, *args)
     end
+
 
     def close_modals
       "bootbox.hideAll()"

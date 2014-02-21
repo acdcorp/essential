@@ -3,12 +3,15 @@
 #= require bootstrap
 #= require turbolinks
 #= require jquery.turbolinks
+#= require pnotify/jquery.pnotify
 #= require turbolinks.redirect
 #= require bootbox/bootbox
-#= require lodash/dist/lodash.js
+#= require lodash/dist/lodash
+#= require underscore.string/lib/underscore.string
 #= require input_mask
 #= require moment
-#= require bootstrap-datetimepicker
+#= require essential/bootstrap-datetimepicker
+#= require jquery.cookie/jquery.cookie
 
 toggleSubNav = ->
   if @data @key
@@ -18,6 +21,19 @@ toggleSubNav = ->
     @parent().removeClass 'active'
     @parent().find('ul').slideUp()
     @removeData @key
+
+show_growls = ->
+  if messages = $.cookie('essential-flash')
+    messages = $.parseJSON messages
+    $.removeCookie 'essential-flash'
+
+    for type, message of messages
+      $.pnotify
+        title: _.str.humanize(type)
+        text: message
+        type: type
+        styling: "fontawesome"
+        history: false
 
 essentialAttrList =
   '[on-change-get]':
@@ -88,14 +104,31 @@ essentialAttrList =
   # 'form[data-remote]':
   #   submit: -> $.ajax method: @attr('method'), url: @attr('action')
 
+$(document).on 'page:change', -> show_growls()
+
 $ ->
   # Load all the live attr events
   for selector, events of essentialAttrList
+    trigger = false
     for event, func of events
       unless event == 'init'
+        trigger = true
         essentialAttr selector, event,
           init: events.init
           trigger: func
+    unless trigger
+      essentialAttr selector, event,
+        init: events.init
+
+  $(document).ajaxComplete (event, xhr, settings) ->
+    messages = xhr.getResponseHeader 'X-Flash-Messages'
+    redirect_path = xhr.getResponseHeader 'X-Widgets-Redirect'
+    $.cookie 'essential-flash', messages if messages
+
+    if redirect_path
+      Turbolinks.visit redirect_path
+    else if messages
+      show_growls()
 
 # The magic method
 window.essentialAttr = (selector, event, callback) ->

@@ -47,7 +47,7 @@ group :development, :test do
   # replace erb files with haml: rake haml:replace_erbs
   # gem "erb2haml", '~> 0.1.5'
   gem 'factory_girl_rails', '>= 4.2.1'
-  gem 'pry', '~> 0.9.12.6'
+  gem 'pry', github: 'pry/pry'
   gem 'pry-rescue', '~> 1.4.0'
   gem 'pry-stack_explorer'
   gem 'faker', '~> 1.2.0'

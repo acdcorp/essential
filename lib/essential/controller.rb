@@ -6,6 +6,7 @@ module Essential
     # helper FontAwesome::Rails::IconHelper
 
     layout :set_layout
+    after_filter :flash_to_headers
 
     # Prevent CSRF attacks by raising an exception.
     # For APIs, you may want to use :null_session instead.
@@ -30,6 +31,15 @@ module Essential
     end
 
     protected
+
+    def flash_to_headers
+      if request.xhr?
+        # Avoiding XSS injections via flash
+        flash_json = Hash[flash.map{|k,v| [k,ERB::Util.h(v)] }].to_json
+        response.headers['X-Flash-Messages'] = flash_json
+        flash.discard
+      end
+    end
 
     def authenticate
       unless %w(sessions passwords invitations).include?(controller_name)
