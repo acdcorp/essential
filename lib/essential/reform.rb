@@ -1,7 +1,7 @@
 module Reform
   class Form
     include Hooks
-    # include Reform::Form::ActiveRecord
+    include Reform::Form::ActiveRecord
     include Reform::Form::ActiveModel
     include Reform::Form::ActiveModel::FormBuilderMethods
 
