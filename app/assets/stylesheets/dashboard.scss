@@ -9,6 +9,10 @@ body {
   margin-bottom: $grid-gutter-width - 5;
 }
 
+.ui-pnotify span.fa {
+  margin-top: 3px;
+}
+
 span.has-error {
   margin: 0 !important;
   margin-bottom: 5px !important;
@@ -21,10 +25,11 @@ span.has-error {
 }
 
 .form-group.required {
- > label > abbr {
+  abbr {
     color: $state-danger-text;
   }
 }
+
 #container {
   padding: 0;
   .sidebar-nav-fixed {
@@ -44,7 +49,6 @@ span.has-error {
   .main {
     padding: $grid-gutter-width !important;
   }
-  position: absolute;
 }
 
 #header {
